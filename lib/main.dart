@@ -24,6 +24,109 @@ class MyApp extends StatelessWidget{
     //   ),
     // );
     const String appTitle = "Edge Hill Tour";
+
+    final testColumn = Column(
+          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Expanded(
+              child: Image.asset("images/image1.jpg"),
+            ),
+            Expanded(
+              child: Image.asset("images/image2.jpg"),
+            ),
+            Expanded(
+              child: Image.asset("images/image3.jpg"),
+            ),
+          ],
+        );
+
+        final greenStar = Icon(Icons.star, color: Colors.green[500]);
+        final blackStar = Icon(Icons.star, color: Colors.black);
+
+        final stars = Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            greenStar,
+            greenStar,
+            greenStar,
+            blackStar,
+            blackStar,
+          ],
+        );
+
+        final ratings = Container(
+          padding: const EdgeInsets.all(20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children:[
+              stars,
+              const Text(
+                "170 Reviews",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: "Roboto",
+                  letterSpacing: 0.5,
+                  fontSize: 20,
+                ),
+              ),
+            ]
+          )
+
+        );
+
+        const descTextStyle = TextStyle(
+        color: Colors.black,
+        fontWeight: FontWeight.w800,
+        fontFamily: 'Roboto',
+        letterSpacing: 0.5,
+        fontSize: 18,
+        height: 2,
+      );
+
+      final iconList = DefaultTextStyle.merge(
+        style: descTextStyle,
+        child: Container(
+          padding: const EdgeInsets.all(20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children:[
+              Column(
+                children:[
+                  Icon(Icons.kitchen, color: Colors.green[500]),
+                  const Text("PREP:"),
+                  const Text("25 min"),
+                ]
+              ),
+              Column(
+                children:[
+                  Icon(Icons.kitchen, color: Colors.green[500]),
+                  const Text("COOK:"),
+                  const Text("1hr"),
+                ]
+              ),
+              Column(
+                children:[
+                  Icon(Icons.kitchen, color: Colors.green[500]),
+                  const Text("FEEDS:"),
+                  const Text("4-6"),
+                ]
+              ),
+            ]
+          )
+        )
+      );
+
+      // final leftColumn = Container(
+      //   padding: const EdgeInsets.fromLTRB(20, 30, 20, 30),
+      //   child: Column(
+      //     children: [
+
+      //     ]
+      //   )
+      // );
+
     return MaterialApp(
       title: appTitle,
       home: Scaffold(
@@ -31,14 +134,16 @@ class MyApp extends StatelessWidget{
           title: const Text(appTitle),
           backgroundColor: Colors.blue,
         ),
-        body:  Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Image.asset("images/image1.jpg"),
-            Image.asset("images/image2.jpg"),
-            Image.asset("images/image3.jpg"),
-          ],
+        body:  
+        Center(
+          child: Column(
+            children:[
+              ratings,
+              iconList
+            ]
+          )
         )
+        
       ),
     );
   }
