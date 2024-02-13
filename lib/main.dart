@@ -1,3 +1,5 @@
+import 'package:edge_hill_tour/navigationTrial.dart';
+import 'package:edge_hill_tour/view/compass/compass.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'layoutTrial.dart';
@@ -16,7 +18,7 @@ void main() {
     //   "Hello, worl!",
     //   textDirection: TextDirection.ltr,
     // ),)   
-    const MyApp4(),
+    const CompassPage(),
   );
 }
 
