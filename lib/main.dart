@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'layoutTrial.dart';
 import 'listTrial.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+
   runApp(
     // const Center(child: Text(
     //   "Hello, worl!",
     //   textDirection: TextDirection.ltr,
-    // ),)
-    const MyApp3(),
+    // ),)   
+    const MyApp2(),
   );
 }
 
