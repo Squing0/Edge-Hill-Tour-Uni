@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'layoutTrial.dart';
 
 void main() {
   runApp(
@@ -6,7 +7,7 @@ void main() {
     //   "Hello, worl!",
     //   textDirection: TextDirection.ltr,
     // ),)
-    const MyApp(),
+    const MyApp2(),
   );
 }
 
