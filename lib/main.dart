@@ -1,10 +1,6 @@
-import 'package:edge_hill_tour/navigationTrial.dart';
 import 'package:edge_hill_tour/view/compass/compass.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'layoutTrial.dart';
-import 'listTrial.dart';
-import 'interactiveTrial.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -54,7 +50,7 @@ class MyApp extends StatelessWidget{
         );
 
         final greenStar = Icon(Icons.star, color: Colors.green[500]);
-        final blackStar = Icon(Icons.star, color: Colors.black);
+        const blackStar = Icon(Icons.star, color: Colors.black);
 
         final stars = Row(
           mainAxisSize: MainAxisSize.min,

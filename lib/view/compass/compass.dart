@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 
 class CompassPage extends StatelessWidget{
@@ -11,14 +10,21 @@ class CompassPage extends StatelessWidget{
     const title = "Compass Page";
     return MaterialApp(
       title: title,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Color.fromARGB(255, 81, 0, 255),
+          brightness: Brightness.dark,
+          ),
+      ),
       home: Scaffold(
         appBar: AppBar(
           title: const Text("Compass Page")
         ),
-        body: Center(
+        body: const Center(
           child: Column(
             children:[
-              CompassSection(),          
+              CompassSection(),    
+              MainInfoSection(),      
             ]
           ),
           )
@@ -64,11 +70,36 @@ class CompassSection extends StatelessWidget{
 
   @override
   Widget build(BuildContext context){
-    return Stack(
+    return const Stack(
       children: <Widget>[
-        ImageSection(image: "images/campusBirdsEye.jpg",),
-        SvgSection(image: "iamges/compass.svg"),
+        ImageSection(image: "images/campusBirdsEye.jpg"),
+        Center(
+          child: SvgSection(image: "images/compass.svg"),
+          )
       ]
+    );
+  }
+}
+
+class MainInfoSection extends StatelessWidget{
+  const MainInfoSection({super.key});
+
+  @override
+  Widget build(BuildContext context){
+    return Center(
+      child: Card(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            AppBar(
+              title: const Text("Catalyst"),
+            ),
+            ImageSection(
+              image: "images/catalyst.jpg"
+            )
+          ]
+        )
+      )
     );
   }
 }

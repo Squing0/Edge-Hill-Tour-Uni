@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class MyApp5 extends StatelessWidget{
   const MyApp5({super.key});
 
   @override
   Widget build(BuildContext context){
-    return MaterialApp(
+    return const MaterialApp(
       home: FirstRoute()
     );
 

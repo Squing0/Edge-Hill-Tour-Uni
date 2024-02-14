@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class MyApp4 extends StatelessWidget{
   const MyApp4({super.key});
@@ -11,7 +10,7 @@ class MyApp4 extends StatelessWidget{
         body:
         Column(
           children:[
-            TextField(
+            const TextField(
               decoration: InputDecoration(
                 hintText: "Enter a search term",
               )
@@ -25,7 +24,7 @@ class MyApp4 extends StatelessWidget{
 
   TextFormField textForm() {
     return TextFormField(
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               border: UnderlineInputBorder(),
               labelText: "Enter your username"
             )
