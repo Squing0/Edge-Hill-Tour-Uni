@@ -12,7 +12,7 @@ class CompassPage extends StatelessWidget{
       title: title,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Color.fromARGB(255, 81, 0, 255),
+          seedColor: const Color.fromARGB(255, 81, 0, 255),
           brightness: Brightness.dark,
           ),
       ),
@@ -35,17 +35,18 @@ class CompassPage extends StatelessWidget{
 }
 
 class ImageSection extends StatelessWidget{
-  const ImageSection({super.key, required this.image});
+  const ImageSection({super.key, required this.image, required this.height});
 
   final String image;
+  final double height;
 
   @override
   Widget build(BuildContext context){
     return Image.asset(
       image,
       // width: 612,
-      // height: 404,
-      fit: BoxFit.cover,
+       height: height,
+      fit: BoxFit.contain,
     );
   }
 }
@@ -59,6 +60,8 @@ class SvgSection extends StatelessWidget{
   Widget build(BuildContext context){
     return SvgPicture.asset(
       image,
+      height: 120, width: 120,
+      fit: BoxFit.scaleDown,
       semanticsLabel: "Compass",
     );
   }
@@ -72,7 +75,7 @@ class CompassSection extends StatelessWidget{
   Widget build(BuildContext context){
     return const Stack(
       children: <Widget>[
-        ImageSection(image: "images/campusBirdsEye.jpg"),
+        ImageSection(image: "images/campusBirdsEye.jpg", height: 380),
         Center(
           child: SvgSection(image: "images/compass.svg"),
           )
@@ -94,12 +97,48 @@ class MainInfoSection extends StatelessWidget{
             AppBar(
               title: const Text("Catalyst"),
             ),
-            ImageSection(
-              image: "images/catalyst.jpg"
-            )
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children:[
+                ImageSection(
+              image: "images/catalyst.jpg",
+              height: 170,
+            ),
+            Icon(
+              Icons.audio_file,
+              color: Colors.green,
+              size: 30,
+              ),              
+              ]
+              
+            ),
+            TextSection(description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli"),
+            
           ]
         )
       )
     );
+  }
+}
+
+class TextSection extends StatelessWidget{
+  const TextSection({
+    super.key,
+    required this.description,
+  });
+
+  final String description;
+
+  @override
+  Widget build(BuildContext context){
+    return Padding(
+      padding: const EdgeInsets.all(32),
+      child: Text(
+        description,
+        softWrap: true,
+        
+      )
+    );
+
   }
 }
