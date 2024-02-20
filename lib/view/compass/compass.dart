@@ -17,16 +17,25 @@ class CompassPage extends StatelessWidget{
           ),
       ),
       home: Scaffold(
+        // resizeToAvoidBottomInset: false,
         appBar: AppBar(
-          title: const Text("Compass Page")
+          title: const Text("Compass Page"),
+          backgroundColor: Color.fromARGB(255, 5, 142, 24),
         ),
-        body: const Center(
-          child: Column(
+        body: Center(
+          child:SingleChildScrollView(
+          child: 
+          Container(
+            height: 900,
+            child: Column(
+            // mainAxisSize: MainAxisSize.max,
             children:[
-              CompassSection(),    
-              MainInfoSection(),      
+               CompassSection(),                
+               MainInfoSection(),      
             ]
           ),
+          )
+          )
           )
       )
     );
@@ -45,8 +54,8 @@ class ImageSection extends StatelessWidget{
     return Image.asset(
       image,
       // width: 612,
-       height: height,
-      fit: BoxFit.contain,
+      height: height,
+      fit: BoxFit.cover,
     );
   }
 }
@@ -73,12 +82,12 @@ class CompassSection extends StatelessWidget{
 
   @override
   Widget build(BuildContext context){
-    return const Stack(
+    return  Stack(
       children: <Widget>[
-        ImageSection(image: "images/campusBirdsEye.jpg", height: 380),
-        Center(
-          child: SvgSection(image: "images/compass.svg"),
-          )
+        Image.asset("images/campusBirdsEye.jpg", fit: BoxFit.cover),
+        // Center(
+        //   child: SvgSection(image: "images/compass.svg"),
+        //   )
       ]
     );
   }
@@ -89,30 +98,49 @@ class MainInfoSection extends StatelessWidget{
 
   @override
   Widget build(BuildContext context){
-    return Center(
+    return Container(
+      height: 250,
       child: Card(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             AppBar(
               title: const Text("Catalyst"),
+              backgroundColor: Color.fromARGB(255, 206, 8, 255),
             ),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children:[
-                ImageSection(
-              image: "images/catalyst.jpg",
-              height: 170,
-            ),
-            Icon(
-              Icons.audio_file,
-              color: Colors.green,
-              size: 30,
-              ),              
+                Container(
+                  height: 200,
+                child: Image.asset("images/catalyst.jpg", fit: BoxFit.contain),
+                ),
+            // Icon(
+            //   Icons.audio_file,
+            //   color: Colors.green,
+            //   size: 30,
+            //   ),              
               ]
               
             ),
-            TextSection(description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli"),
+            Padding(
+              child: Icon(
+               Icons.audio_file,
+              color: Colors.green,
+               size: 30,
+              ), 
+              padding:    const EdgeInsets.only(top: 19)
+
+            ),           
+            const TextSection(description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli"),
+
+            const ElevatedButton(            
+              onPressed: null,
+              child: const Text(
+                "Back to tour selection", 
+                style: TextStyle(fontSize: 20, color: Colors.white),
+                ),
+            ),
             
           ]
         )
@@ -132,11 +160,11 @@ class TextSection extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return Padding(
-      padding: const EdgeInsets.all(32),
+      padding: const EdgeInsets.all(24),
       child: Text(
         description,
         softWrap: true,
-        
+        style: TextStyle(fontSize: 20),
       )
     );
 
