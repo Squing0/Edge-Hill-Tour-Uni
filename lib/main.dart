@@ -16,7 +16,7 @@ void main() {
     //   "Hello, worl!",
     //   textDirection: TextDirection.ltr,
     // ),)   
-    const SelectTourPage(),
+    const HomePage(),
   );
 }
 
