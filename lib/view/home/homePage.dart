@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:edge_hill_tour/view/select_tour/selectTour.dart';
 
 class HomePage extends StatelessWidget{
   const HomePage({super.key});
@@ -14,7 +15,17 @@ class HomePage extends StatelessWidget{
           brightness: Brightness.dark,
           ),
     ),
-    home: Scaffold(
+    home: HomePageMain(),
+    );
+  }
+}
+
+class HomePageMain extends StatelessWidget{
+    const HomePageMain({super.key});
+
+    @override
+    Widget build(BuildContext context){
+      return Scaffold(
       // appBar: AppBar(
       //     title: const Text("Home Page"),
       //     backgroundColor: Color.fromARGB(255, 5, 142, 24),
@@ -25,8 +36,12 @@ class HomePage extends StatelessWidget{
           child: Column(children: [const Text("Edge Hill Tour", 
           style: TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.w700)),
           Spacer(),
-          const ElevatedButton(            
-              onPressed: null,
+          ElevatedButton(            
+              onPressed: (){
+              Navigator.push(
+                context, 
+                MaterialPageRoute(builder: (context) => const SelectTourPage()));
+            },
               child: const Text(
                 "Select Tour", 
                 style: TextStyle(fontSize: 45, color: Colors.white),
@@ -34,7 +49,6 @@ class HomePage extends StatelessWidget{
             ),]) ,
           )
 
-    )
     );
+    }
   }
-}

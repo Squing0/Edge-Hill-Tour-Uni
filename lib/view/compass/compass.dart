@@ -31,17 +31,62 @@ class CompassPage extends StatelessWidget{
             // mainAxisSize: MainAxisSize.max,
             children:[
                CompassSection(),                
-               MainInfoSection(),      
+               MainInfoSection(),  
+                           ElevatedButton(            
+              onPressed: () =>  Navigator.pop(context),
+              child: const Text(
+                "Back to tour selection", 
+                style: TextStyle(fontSize: 20, color: Colors.white),
+                ),
+            ),
             ]
           ),
           )
           )
           )
       )
+      
     );
 
   }
 }
+
+class CompassPageMain extends StatelessWidget{
+    const CompassPageMain({super.key});
+
+    @override
+    Widget build(BuildContext context){
+      return Scaffold(
+        // resizeToAvoidBottomInset: false,
+        appBar: AppBar(
+          title: const Text("Compass Page"),
+          backgroundColor: Color.fromARGB(255, 5, 142, 24),
+        ),
+        body: Center(
+          child:SingleChildScrollView(
+          child: 
+          Container(
+            height: 900,
+            child: Column(
+            // mainAxisSize: MainAxisSize.max,
+            children:[
+               CompassSection(),                
+               MainInfoSection(),  
+               ElevatedButton(            
+              onPressed: () =>  Navigator.pop(context),
+              child: const Text(
+                "Back to tour selection", 
+                style: TextStyle(fontSize: 20, color: Colors.white),
+                ),
+            ),
+            ]
+          ),
+          )
+          )
+          )
+      );
+    }
+  }
 
 class ImageSection extends StatelessWidget{
   const ImageSection({super.key, required this.image, required this.height});
@@ -134,13 +179,13 @@ class MainInfoSection extends StatelessWidget{
             ),           
             const TextSection(description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli"),
 
-            const ElevatedButton(            
-              onPressed: null,
-              child: const Text(
-                "Back to tour selection", 
-                style: TextStyle(fontSize: 20, color: Colors.white),
-                ),
-            ),
+            // ElevatedButton(            
+            //   onPressed: () =>  Navigator.pop(context),
+            //   child: const Text(
+            //     "Back to tour selection", 
+            //     style: TextStyle(fontSize: 20, color: Colors.white),
+            //     ),
+            // ),
             
           ]
         )

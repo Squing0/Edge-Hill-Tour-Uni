@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:accordion/accordion.dart';
+import 'package:edge_hill_tour/view/compass/compass.dart';
 
 
 class SelectTourPage extends StatelessWidget{
@@ -20,31 +21,77 @@ class SelectTourPage extends StatelessWidget{
           brightness: Brightness.dark,
           ),
     ),
-    home: Scaffold(
+    home: SelectTourMain(),
+    //   appBar: AppBar(
+    //       title: const Text("Tour Selection"),
+    //       backgroundColor: const Color.fromARGB(255, 5, 142, 24),
+    //     ),
+    //     body: 
+    //     ListView(
+    //       padding: const EdgeInsets.only(top: 5, bottom: 5),
+    //       children: <Widget>[
+    //         Accordion(
+    //           header: const Text("Accordion"),
+    //           children:[
+    //             CreateAccordionSection(campusTourPlaces, tourChoice[0]),
+    //             CreateAccordionSection(accommodationPlaces, tourChoice[1]),
+    //           ]
+              
+    //         ),
+    //         DropdownMenu<String>(
+    //           initialSelection: "",
+    //           onSelected: (String? value){
+    //             // setState((){
+    //             //   dropdownValue = value!;
+    //             // });
+    //             // State still needs to be added here
+    //           },
+    //           dropdownMenuEntries: tourChoice.map<DropdownMenuEntry<String>>((String value) {
+    //     return DropdownMenuEntry<String>(value: value, label: value);
+    //   }).toList(),
+
+    //         ),
+    //         const Padding(
+    //           padding: const EdgeInsets.only(top: 16.0, left: 6.0, right: 6.0),
+    //           child: const ElevatedButton(            
+    //             onPressed: null,
+    //             child: const Text(
+    //               "Confirm Tour Selection", 
+    //               style: TextStyle(fontSize: 20, color: Colors.white),
+    //               ),
+    //           ),
+    //         ),
+    //       ]
+    //     ),
+        
+    // )
+    );
+  }
+}
+
+class SelectTourMain extends StatelessWidget{
+    SelectTourMain({super.key});
+
+    // Not sure if this navigation will work:
+    // final GlobalKey<ScaffoldState> _destinationKey = GlobalKey<ScaffoldState>();
+
+
+    final List<String> campusTourPlaces = ["Catalyst", "Arts Center", "Tech Hub", "Education Building", "Creative Edge"];
+    final List<String> accommodationPlaces = ["Forest Court", "Founders West", "Founders East", "Woodland Court", "Chancellors Court"];
+    final List<String> tourChoice = ["Campus Tour", "Accommodation Tour"];
+
+    @override
+    Widget build(BuildContext context){
+      return Scaffold(
+      // key: _destinationKey,  
       appBar: AppBar(
           title: const Text("Tour Selection"),
           backgroundColor: const Color.fromARGB(255, 5, 142, 24),
         ),
         body: 
-        // Center(
-        //   child: Column(
-        //     children:
-        //     ListView(
-        //       children: <Widget>[
-        //         Container(
-                  
-        //         )
-        //       ]
-        //     ),
-        //   ),
-        //   )
         ListView(
           padding: const EdgeInsets.only(top: 5, bottom: 5),
           children: <Widget>[
-            // ListContainer(),
-            // ListContainer(),
-            // ListContainer(),
-            // ListContainer(),
             Accordion(
               header: const Text("Accordion"),
               children:[
@@ -60,18 +107,18 @@ class SelectTourPage extends StatelessWidget{
                 //   dropdownValue = value!;
                 // });
                 // State still needs to be added here
-
               },
               dropdownMenuEntries: tourChoice.map<DropdownMenuEntry<String>>((String value) {
         return DropdownMenuEntry<String>(value: value, label: value);
       }).toList(),
 
             ),
-            const Padding(
+            Padding(
               padding: const EdgeInsets.only(top: 16.0, left: 6.0, right: 6.0),
-              child: const ElevatedButton(            
-                onPressed: null,
-                child: const Text(
+              child: ElevatedButton(            
+                onPressed:() => Navigator.push(context, MaterialPageRoute(builder: (context) => const CompassPage())),
+                // onPressed: () => Navigator.pushNamed(context, '/destinationScreen', arguments: destinationKey,),
+                child: Text(
                   "Confirm Tour Selection", 
                   style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
@@ -80,8 +127,8 @@ class SelectTourPage extends StatelessWidget{
           ]
         ),
         
-    )
     );
+    }
   }
 
   AccordionSection CreateAccordionSection(List<String> campusTourPlaces, String accordionName) {
@@ -98,6 +145,8 @@ class SelectTourPage extends StatelessWidget{
           );
   }
 
+  
+
   Row CreateAccordionRow(String labelText) {
     return Row(
               children:[
@@ -108,7 +157,7 @@ class SelectTourPage extends StatelessWidget{
               );
   }
 
-  Container ListContainer() {
+    Container ListContainer() {
     return Container(
             height: 50,
             color: Colors.amber[500],
@@ -124,7 +173,6 @@ class SelectTourPage extends StatelessWidget{
             ),
           );
   }
-}
 
 class CheckBoxExample extends StatefulWidget{
   const CheckBoxExample({super.key});
@@ -162,3 +210,4 @@ class _CheckboxExampleState extends State<CheckBoxExample> {
     );
   }
 }
+
