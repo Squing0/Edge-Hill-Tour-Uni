@@ -4,6 +4,7 @@ import 'package:edge_hill_tour/view/select_tour/selectTour.dart';
 import 'package:edge_hill_tour/navigationTrial.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:edge_hill_tour/jsonTest.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,7 +18,7 @@ void main() {
     //   "Hello, worl!",
     //   textDirection: TextDirection.ltr,
     // ),)   
-    const HomePage(),
+    LocationView(),
   );
 }
 
