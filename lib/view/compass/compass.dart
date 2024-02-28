@@ -20,18 +20,18 @@ class CompassPage extends StatelessWidget{
         // resizeToAvoidBottomInset: false,
         appBar: AppBar(
           title: const Text("Compass Page"),
-          backgroundColor: Color.fromARGB(255, 5, 142, 24),
+          backgroundColor: const Color.fromARGB(255, 5, 142, 24),
         ),
         body: Center(
           child:SingleChildScrollView(
           child: 
-          Container(
+          SizedBox(
             height: 900,
             child: Column(
             // mainAxisSize: MainAxisSize.max,
             children:[
-               CompassSection(),                
-               MainInfoSection(),  
+               const CompassSection(),                
+               const MainInfoSection(),  
                            ElevatedButton(            
               onPressed: () =>  Navigator.pop(context),
               child: const Text(
@@ -60,18 +60,18 @@ class CompassPageMain extends StatelessWidget{
         // resizeToAvoidBottomInset: false,
         appBar: AppBar(
           title: const Text("Compass Page"),
-          backgroundColor: Color.fromARGB(255, 5, 142, 24),
+          backgroundColor: const Color.fromARGB(255, 5, 142, 24),
         ),
         body: Center(
           child:SingleChildScrollView(
           child: 
-          Container(
+          SizedBox(
             height: 900,
             child: Column(
             // mainAxisSize: MainAxisSize.max,
             children:[
-               CompassSection(),                
-               MainInfoSection(),  
+               const CompassSection(),                
+               const MainInfoSection(),  
                ElevatedButton(            
               onPressed: () =>  Navigator.pop(context),
               child: const Text(
@@ -143,7 +143,7 @@ class MainInfoSection extends StatelessWidget{
 
   @override
   Widget build(BuildContext context){
-    return Container(
+    return SizedBox(
       height: 250,
       child: Card(
         child: Column(
@@ -151,12 +151,12 @@ class MainInfoSection extends StatelessWidget{
           children: <Widget>[
             AppBar(
               title: const Text("Catalyst"),
-              backgroundColor: Color.fromARGB(255, 206, 8, 255),
+              backgroundColor: const Color.fromARGB(255, 206, 8, 255),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children:[
-                Container(
+                SizedBox(
                   height: 200,
                 child: Image.asset("images/catalyst.jpg", fit: BoxFit.contain),
                 ),
@@ -168,13 +168,13 @@ class MainInfoSection extends StatelessWidget{
               ]
               
             ),
-            Padding(
+            const Padding(
+              padding:    EdgeInsets.only(top: 19),
               child: Icon(
                Icons.audio_file,
               color: Colors.green,
                size: 30,
-              ), 
-              padding:    const EdgeInsets.only(top: 19)
+              )
 
             ),           
             const TextSection(description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli"),
@@ -209,7 +209,7 @@ class TextSection extends StatelessWidget{
       child: Text(
         description,
         softWrap: true,
-        style: TextStyle(fontSize: 20),
+        style: const TextStyle(fontSize: 20),
       )
     );
 

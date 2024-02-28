@@ -118,7 +118,7 @@ class SelectTourMain extends StatelessWidget{
               child: ElevatedButton(            
                 onPressed:() => Navigator.push(context, MaterialPageRoute(builder: (context) => const CompassPage())),
                 // onPressed: () => Navigator.pushNamed(context, '/destinationScreen', arguments: destinationKey,),
-                child: Text(
+                child: const Text(
                   "Confirm Tour Selection", 
                   style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
@@ -150,9 +150,9 @@ class SelectTourMain extends StatelessWidget{
   Row CreateAccordionRow(String labelText) {
     return Row(
               children:[
-                Text(labelText, style: TextStyle(color: Colors.black)),
-                Spacer(),
-                CheckBoxExample(),
+                Text(labelText, style: const TextStyle(color: Colors.black)),
+                const Spacer(),
+                const CheckBoxExample(),
                 ]
               );
   }

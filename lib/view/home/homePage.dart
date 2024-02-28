@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget{
           brightness: Brightness.dark,
           ),
     ),
-    home: HomePageMain(),
+    home: const HomePageMain(),
     );
   }
 }
@@ -35,7 +35,7 @@ class HomePageMain extends StatelessWidget{
           alignment: Alignment.center,
           child: Column(children: [const Text("Edge Hill Tour", 
           style: TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.w700)),
-          Spacer(),
+          const Spacer(),
           ElevatedButton(            
               onPressed: (){
               Navigator.push(
