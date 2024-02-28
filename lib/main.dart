@@ -14,7 +14,7 @@ void main() {
     //   "Hello, worl!",
     //   textDirection: TextDirection.ltr,
     // ),)   
-    const LocationView(),
+    YourWidget(),
   );
 }
 
