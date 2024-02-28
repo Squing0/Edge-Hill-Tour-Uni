@@ -6,7 +6,7 @@ class LocationViewModel{
   List<Location> locations = [];
 
   Future<void> loadLocations() async{
-    final String jsonContent = await rootBundle.loadString("jsonData/locations.json");
+    final String jsonContent = await rootBundle.loadString("assets/jsonData/locations.json");
     final List<dynamic> jsonList = json.decode(jsonContent);
 
     locations = jsonList.map((json) => Location.fromJson(json)).toList();
