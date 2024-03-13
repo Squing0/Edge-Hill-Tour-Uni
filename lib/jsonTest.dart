@@ -57,6 +57,9 @@ class YourWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int currentIndex = 0;
+
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -80,31 +83,164 @@ class YourWidget extends StatelessWidget {
                 child: Text('No data available'),
               );
             }
-            return Builder(
-              builder: (BuildContext context) {
-            return ListView.builder(
-              itemCount: locations.length,
-              itemBuilder: (context, index) {
-                return Center(
-              // child: Text(locations[index]['imageRef'] ?? ''),
-              child: Column(children: [
-                Text(locations[index]['imageRef'] ?? ''),
-                Text(locations[index]['description'] ?? ''),
-                Text(locations[index]['latitude'].toString() ?? ''),
-                Text(locations[index]['longitude'].toString() ?? ''),
-                Text(locations[index]['name'] ?? ''),
-                Text("")
-              ],)
-        );
-      },
-    );
-  },
-);
+
+            Map<String, dynamic> locationAtIndex = locations[4];
+return Column(
+                children: [
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: 1,
+                      itemBuilder: (context, index) {
+                        return Center(
+                          child: Column(
+                            children: [
+                              Text(locationAtIndex['name'] ?? ''),
+                              Text(locationAtIndex['description'] ?? ''),
+                              Text(locationAtIndex['latitude'].toString() ?? ''),
+                              Text(locationAtIndex['longitude'].toString() ?? ''),
+                              Image.asset("images/" + locationAtIndex['imageRef'] ?? ''),
+                              Text(locationAtIndex['imageRef'] ?? ''),
+                              Text(""),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          if (currentIndex > 0) {
+                            currentIndex--;
+                          }
+                        },
+                        child: Text("Previous"),
+                      ),
+                      SizedBox(width: 20),
+                      ElevatedButton(
+                        onPressed: () {
+                          if (currentIndex < locations.length - 1) {
+                            currentIndex++;
+                          }
+                        },
+                        child: Text("Next"),
+                      ),
+                    ],
+                  ),
+                ],
+              );
+
           }
         },
       ),
 
       )
+    );
+  }
+
+
+  Future<List<dynamic>> loadJsonFile() async {
+    String jsonString = await rootBundle.loadString('assets/locations.json');
+    return json.decode(jsonString);
+  }
+}
+
+class YourWidget2 extends StatefulWidget {
+  const YourWidget2({Key? key}) : super(key: key);
+
+  @override
+  _YourWidgetState createState() => _YourWidgetState();
+}
+
+class _YourWidgetState extends State<YourWidget2> {
+  int currentIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Your App'),
+        ),
+        body: FutureBuilder(
+          future: loadJsonFile(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return const CircularProgressIndicator();
+            } else if (snapshot.hasError) {
+              return Center(
+                child: Text('Error: ${snapshot.error}'),
+              );
+            } else {
+              // Explicitly check for nullability before accessing snapshot.data
+              List<dynamic>? locations = snapshot.data;
+
+              if (locations == null || locations.isEmpty) {
+                return const Center(
+                  child: Text('No data available'),
+                );
+              }
+
+              Map<String, dynamic> locationAtIndex = locations[currentIndex];
+
+              return Column(
+                children: [
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: 1,
+                      itemBuilder: (context, index) {
+                        return Center(
+                          child: Column(
+                            children: [
+                              Text(locationAtIndex['name'] ?? ''),
+                              Text(locationAtIndex['description'] ?? ''),
+                              Text(locationAtIndex['latitude'].toString() ?? ''),
+                              Text(locationAtIndex['longitude'].toString() ?? ''),
+                              Image.asset("images/" + locationAtIndex['imageRef'] ?? ''),
+                              Text(locationAtIndex['imageRef'] ?? ''),
+                              Text(""),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          if (currentIndex > 0) {
+                            setState(() {
+                              currentIndex--;
+                            });
+                          }
+                        },
+                        child: Text("Previous"),
+                      ),
+                      SizedBox(width: 20),
+                      ElevatedButton(
+                        onPressed: () {
+                          if (currentIndex < locations.length - 1) {
+                            setState(() {
+                              currentIndex++;
+                            });
+                          }
+                        },
+                        child: Text("Next"),
+                      ),
+                    ],
+                  ),
+                ],
+              );
+            }
+          },
+        ),
+      ),
     );
   }
 
