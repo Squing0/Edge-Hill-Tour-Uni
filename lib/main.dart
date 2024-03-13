@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:edge_hill_tour/jsonTest.dart';
-import 'package:edge_hill_tour/layoutTrial.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

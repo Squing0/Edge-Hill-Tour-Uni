@@ -100,14 +100,14 @@ return Column(
                               Text(locationAtIndex['longitude'].toString() ?? ''),
                               Image.asset("images/" + locationAtIndex['imageRef'] ?? ''),
                               Text(locationAtIndex['imageRef'] ?? ''),
-                              Text(""),
+                              const Text(""),
                             ],
                           ),
                         );
                       },
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -117,16 +117,16 @@ return Column(
                             currentIndex--;
                           }
                         },
-                        child: Text("Previous"),
+                        child: const Text("Previous"),
                       ),
-                      SizedBox(width: 20),
+                      const SizedBox(width: 20),
                       ElevatedButton(
                         onPressed: () {
                           if (currentIndex < locations.length - 1) {
                             currentIndex++;
                           }
                         },
-                        child: Text("Next"),
+                        child: const Text("Next"),
                       ),
                     ],
                   ),
@@ -201,14 +201,14 @@ class _YourWidgetState extends State<YourWidget2> {
                               Text(locationAtIndex['longitude'].toString() ?? ''),
                               Image.asset("images/" + locationAtIndex['imageRef'] ?? ''),
                               Text(locationAtIndex['imageRef'] ?? ''),
-                              Text(""),
+                              const Text(""),
                             ],
                           ),
                         );
                       },
                     ),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -220,9 +220,9 @@ class _YourWidgetState extends State<YourWidget2> {
                             });
                           }
                         },
-                        child: Text("Previous"),
+                        child: const Text("Previous"),
                       ),
-                      SizedBox(width: 20),
+                      const SizedBox(width: 20),
                       ElevatedButton(
                         onPressed: () {
                           if (currentIndex < locations.length - 1) {
@@ -231,7 +231,7 @@ class _YourWidgetState extends State<YourWidget2> {
                             });
                           }
                         },
-                        child: Text("Next"),
+                        child: const Text("Next"),
                       ),
                     ],
                   ),
