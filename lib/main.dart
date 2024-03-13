@@ -14,7 +14,7 @@ void main() {
     //   "Hello, worl!",
     //   textDirection: TextDirection.ltr,
     // ),)   
-    YourWidget(),
+    const YourWidget(),
   );
 }
 

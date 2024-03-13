@@ -1,16 +1,37 @@
 [
     {
-      "name": "Location 1",
+      "name": "Catalyst",
       "latitude": 40.7128,
       "longitude": -74.0060,
-      "imageRef": "image1.jpg",
+      "imageRef": "catalyst.jpg",
       "description": "Description 1"
     },
     {
-      "name": "Location 2",
+      "name": "Tech hub",
       "latitude": 34.0522,
       "longitude": -118.2437,
-      "imageRef": "image2.jpg",
+      "imageRef": "tech-hub.jpg",
       "description": "Description 2"
+    },
+    {
+      "name": "Main Building",
+      "latitude": 32.0522,
+      "longitude": -168.2437,
+      "imageRef": "main-building.jpg",
+      "description": "Description 3"
+    },
+    {
+      "name": "Creative Edge",
+      "latitude": 32.0522,
+      "longitude": -168.2437,
+      "imageRef": "creative-edge.jpg",
+      "description": "Description 4"
+    },
+    {
+      "name": "Arts Centre",
+      "latitude": 32.0522,
+      "longitude": -168.2437,
+      "imageRef": "arts-centre.jpg",
+      "description": "Description 5"
     }
   ]

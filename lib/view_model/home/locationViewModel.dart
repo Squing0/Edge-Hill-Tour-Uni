@@ -17,7 +17,7 @@ class LocationViewModel{
   try {
     String jsonString = await rootBundle.loadString('locations.json');
 
-    if (jsonString != null && jsonString.isNotEmpty) {
+    if (jsonString.isNotEmpty) {
       List<dynamic> locations = json.decode(jsonString);
 
       // Use the 'locations' list as needed

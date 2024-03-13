@@ -17,14 +17,7 @@ class _LocationViewState extends State<LocationView> {
   void initState() {
     super.initState();
     viewModel.loadJsonFile();
-    // debug1();
   }
-
-  // debug1() {
-  //   print(viewModel.locations[1].name);
-  //   // TODO: implement debug1
-  //   // throw UnimplementedError();
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +26,7 @@ class _LocationViewState extends State<LocationView> {
           appBar: AppBar(
         title: const Text('Location View'),
       ),
-      body: Container(
+      body: SizedBox(
         height: 200,
         width: 200,
         child: ListView.builder(
@@ -42,11 +35,6 @@ class _LocationViewState extends State<LocationView> {
           itemCount: viewModel.locations.length,
           itemBuilder: (context, index) {
             final location = viewModel.locations[index];
-            // return ListTile(
-            //   title: const Text("location.name"),
-            //   subtitle: Text(location.description),
-            //   // Add more UI elements as needed
-            // );
             return  Column(
               children: [
                 Text(location.description)
@@ -57,29 +45,6 @@ class _LocationViewState extends State<LocationView> {
       )
       )
       );
-      // body: Column(
-      //   children: [
-      //     const Text("HI!")
-      //   ]
-      // )
-      //   )
-      // );
-    // return Scaffold(
-    //   appBar: AppBar(
-    //     title: const Text('Location View'),
-    //   ),
-    //   body: ListView.builder(
-    //     itemCount: viewModel.locations.length,
-    //     itemBuilder: (context, index) {
-    //       final location = viewModel.locations[index];
-    //       return ListTile(
-    //         title: Text(location.name),
-    //         subtitle: Text(location.description),
-    //         // Add more UI elements as needed
-    //       );
-    //     },
-    //   ),
-    // );
   }
 }
 
@@ -88,83 +53,59 @@ void debug1(LocationViewModel lol){
 }
 
 class YourWidget extends StatelessWidget {
+  const YourWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-        title: Text('Your App'),
+        title: const Text('Your App'),
       ),
       body: FutureBuilder(
         future: loadJsonFile(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
+            return const CircularProgressIndicator();
           } else if (snapshot.hasError) {
             return Center(
               child: Text('Error: ${snapshot.error}'),
             );
           } else {
             // Explicitly check for nullability before accessing snapshot.data
-            List<dynamic>? locations = snapshot.data as List<dynamic>?;
+            List<dynamic>? locations = snapshot.data;
 
             if (locations == null || locations.isEmpty) {
-              return Center(
+              return const Center(
                 child: Text('No data available'),
               );
             }
-
+            return Builder(
+              builder: (BuildContext context) {
             return ListView.builder(
               itemCount: locations.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(locations[index]['imageRef'] ?? ''), // Adjust based on your data structure
-                  // Add other widgets as needed
-                );
-              },
-            );
+                return Center(
+              // child: Text(locations[index]['imageRef'] ?? ''),
+              child: Column(children: [
+                Text(locations[index]['imageRef'] ?? ''),
+                Text(locations[index]['description'] ?? ''),
+                Text(locations[index]['latitude'].toString() ?? ''),
+                Text(locations[index]['longitude'].toString() ?? ''),
+                Text(locations[index]['name'] ?? ''),
+                Text("")
+              ],)
+        );
+      },
+    );
+  },
+);
           }
         },
       ),
 
       )
     );
-    // return Scaffold(
-    //   appBar: AppBar(
-    //     title: Text('Your App'),
-    //   ),
-    //   body: FutureBuilder(
-    //     future: loadJsonFile(),
-    //     builder: (context, snapshot) {
-    //       if (snapshot.connectionState == ConnectionState.waiting) {
-    //         return CircularProgressIndicator();
-    //       } else if (snapshot.hasError) {
-    //         return Center(
-    //           child: Text('Error: ${snapshot.error}'),
-    //         );
-    //       } else {
-    //         // Explicitly check for nullability before accessing snapshot.data
-    //         List<dynamic>? locations = snapshot.data as List<dynamic>?;
-
-    //         if (locations == null || locations.isEmpty) {
-    //           return Center(
-    //             child: Text('No data available'),
-    //           );
-    //         }
-
-    //         return ListView.builder(
-    //           itemCount: locations.length,
-    //           itemBuilder: (context, index) {
-    //             return ListTile(
-    //               title: Text(locations[index]['name'] ?? ''), // Adjust based on your data structure
-    //               // Add other widgets as needed
-    //             );
-    //           },
-    //         );
-    //       }
-    //     },
-    //   ),
-    // );
   }
 
   Future<List<dynamic>> loadJsonFile() async {
