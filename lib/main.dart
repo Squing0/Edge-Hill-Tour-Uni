@@ -15,7 +15,7 @@ void main() {
     //   "Hello, worl!",
     //   textDirection: TextDirection.ltr,
     // ),)   
-    CompassPage(fileName: "MainTour"),
+    CompassPage(fileName: "Main-Tour"),
   );
 }
 
