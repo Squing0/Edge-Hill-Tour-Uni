@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:edge_hill_tour/jsonTest.dart';
+import 'package:edge_hill_tour/view/compass/compass.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,7 +15,7 @@ void main() {
     //   "Hello, worl!",
     //   textDirection: TextDirection.ltr,
     // ),)   
-    const YourWidget2(),
+    CompassPage(fileName: "MainTour"),
   );
 }
 

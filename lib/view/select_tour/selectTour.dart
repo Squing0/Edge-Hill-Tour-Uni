@@ -116,7 +116,7 @@ class SelectTourMain extends StatelessWidget{
             Padding(
               padding: const EdgeInsets.only(top: 16.0, left: 6.0, right: 6.0),
               child: ElevatedButton(            
-                onPressed:() => Navigator.push(context, MaterialPageRoute(builder: (context) => const CompassPage())),
+                onPressed:() => Navigator.push(context, MaterialPageRoute(builder: (context) => const CompassPage(fileName: "locations"))),
                 // onPressed: () => Navigator.pushNamed(context, '/destinationScreen', arguments: destinationKey,),
                 child: const Text(
                   "Confirm Tour Selection", 

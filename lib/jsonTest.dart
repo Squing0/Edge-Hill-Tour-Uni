@@ -197,8 +197,8 @@ class _YourWidgetState extends State<YourWidget2> {
                             children: [
                               Text(locationAtIndex['name'] ?? ''),
                               Text(locationAtIndex['description'] ?? ''),
-                              Text(locationAtIndex['latitude'].toString() ?? ''),
-                              Text(locationAtIndex['longitude'].toString() ?? ''),
+                              Text("Latitude: " + locationAtIndex['latitude'].toString() ?? ''),
+                              Text("Longitude: " + locationAtIndex['longitude'].toString() ?? ''),
                               Image.asset("images/" + locationAtIndex['imageRef'] ?? ''),
                               Text(locationAtIndex['imageRef'] ?? ''),
                               const Text(""),

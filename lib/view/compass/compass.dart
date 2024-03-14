@@ -1,9 +1,26 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter/services.dart';
+import 'package:edge_hill_tour/view_model/home/locationViewModel.dart';
+
+class CompassPage extends StatefulWidget{
+  const CompassPage({super.key, required this.fileName});
+
+  final String fileName;
+
+  @override
+  State<CompassPage> createState() => _CompassPageState(fileName);
+}
 
 
-class CompassPage extends StatelessWidget{
-  const CompassPage({super.key});
+
+class _CompassPageState extends State<CompassPage> {
+  String fileName2 = "";
+
+   _CompassPageState(String fileName) {
+    fileName2 = fileName;
+  }
 
   @override
   Widget build(BuildContext context){
@@ -22,34 +39,96 @@ class CompassPage extends StatelessWidget{
           title: const Text("Compass Page"),
           backgroundColor: const Color.fromARGB(255, 5, 142, 24),
         ),
-        body: Center(
-          child:SingleChildScrollView(
-          child: 
-          SizedBox(
-            height: 900,
-            child: Column(
-            // mainAxisSize: MainAxisSize.max,
-            children:[
-               const CompassSection(),                
-               const MainInfoSection(),  
-                           ElevatedButton(            
-              onPressed: () =>  Navigator.pop(context),
-              child: const Text(
-                "Back to tour selection", 
-                style: TextStyle(fontSize: 20, color: Colors.white),
-                ),
-            ),
-            ]
-          ),
-          )
-          )
-          )
+        body: FutureBuilder(
+          future: loadJsonFile(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+            return const CircularProgressIndicator();
+          } else if (snapshot.hasError) {
+            return Center(
+              child: Text('Error: ${snapshot.error}'),
+            );
+          }
+          else{
+            List<dynamic>? locations = snapshot.data;
+
+            if (locations == null || locations.isEmpty) {
+              return const Center(
+                child: Text('No data available'),
+              );
+            }
+
+            Map<String, dynamic> locationAtIndex = locations[4];
+            
+            return Column(
+              children:[
+                Expanded(
+                  child: ListView.builder(
+                      itemCount: 1,
+                      itemBuilder: (context, index) {
+                        return Center(
+                          child: SingleChildScrollView(
+                            child: SizedBox(
+                              height: 900,
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  CompassSection(),
+                                  MainInfoSection(name: locationAtIndex['name'] ?? '', imageRef: locationAtIndex['imageRef'] ?? '', description: locationAtIndex['description'] ?? ''),
+                                ]
+                              )
+                            )
+                            )
+                        );
+                      },
+                    ),
+
+                )
+              ]
+            );
+
+
+
+          }
+
+          }
+  
+        )
       )
       
     );
 
   }
+
+  Future<List<dynamic>> loadJsonFile() async {
+    String jsonString = await rootBundle.loadString("assets/" + fileName2 + ".json");
+    return json.decode(jsonString);
+  }
 }
+
+
+            // return Center(
+            //   child:SingleChildScrollView(
+            //   child: 
+            //   SizedBox(
+            //     height: 900,
+            //     child: Column(
+            //     // mainAxisSize: MainAxisSize.max,
+            //     children:[
+            //        const CompassSection(),                
+            //        const MainInfoSection(),  
+            //                    ElevatedButton(            
+            //       onPressed: () =>  Navigator.pop(context),
+            //       child: const Text(
+            //         "Back to tour selection", 
+            //         style: TextStyle(fontSize: 20, color: Colors.white),
+            //         ),
+            //     ),
+            //     ]
+            //   ),
+            //   )
+            //   )
+            //   );
 
 class CompassPageMain extends StatelessWidget{
     const CompassPageMain({super.key});
@@ -71,7 +150,7 @@ class CompassPageMain extends StatelessWidget{
             // mainAxisSize: MainAxisSize.max,
             children:[
                const CompassSection(),                
-               const MainInfoSection(),  
+              //  const MainInfoSection(),  
                ElevatedButton(            
               onPressed: () =>  Navigator.pop(context),
               child: const Text(
@@ -129,7 +208,7 @@ class CompassSection extends StatelessWidget{
   Widget build(BuildContext context){
     return  Stack(
       children: <Widget>[
-        Image.asset("images/campusBirdsEye.jpg", fit: BoxFit.cover),
+        Image.asset("images/campusBirdsEye.jpg", fit: BoxFit.contain),
         // Center(
         //   child: SvgSection(image: "images/compass.svg"),
         //   )
@@ -139,7 +218,14 @@ class CompassSection extends StatelessWidget{
 }
 
 class MainInfoSection extends StatelessWidget{
-  const MainInfoSection({super.key});
+  const MainInfoSection({super.key, 
+  required this.name, 
+  required this.description, 
+  required this.imageRef});
+
+  final String name;
+  final String description;
+  final String imageRef;
 
   @override
   Widget build(BuildContext context){
@@ -150,7 +236,7 @@ class MainInfoSection extends StatelessWidget{
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             AppBar(
-              title: const Text("Catalyst"),
+              title: Text(name),
               backgroundColor: const Color.fromARGB(255, 206, 8, 255),
             ),
             Row(
@@ -158,7 +244,7 @@ class MainInfoSection extends StatelessWidget{
               children:[
                 SizedBox(
                   height: 200,
-                child: Image.asset("images/catalyst.jpg", fit: BoxFit.contain),
+                child: Image.asset("images/" + imageRef, fit: BoxFit.contain),
                 ),
             // Icon(
             //   Icons.audio_file,
@@ -177,7 +263,7 @@ class MainInfoSection extends StatelessWidget{
               )
 
             ),           
-            const TextSection(description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate veli"),
+            TextSection(description: description),
 
             // ElevatedButton(            
             //   onPressed: () =>  Navigator.pop(context),
