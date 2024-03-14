@@ -11,7 +11,7 @@ class SelectTourPage extends StatelessWidget{
     const title = "Tour Selection";
     List<String> campusTourPlaces = ["Catalyst", "Arts Center", "Tech Hub", "Education Building", "Creative Edge"];
     List<String> accommodationPlaces = ["Forest Court", "Founders West", "Founders East", "Woodland Court", "Chancellors Court"];
-    List<String> tourChoice = ["Campus Tour", "Accommodation Tour"];
+    List<String> tourChoice = ["Main-Tour", "Accommodation"];
 
     return MaterialApp(
       title: title,
@@ -69,16 +69,19 @@ class SelectTourPage extends StatelessWidget{
   }
 }
 
-class SelectTourMain extends StatelessWidget{
+class SelectTourMain extends StatefulWidget{
     SelectTourMain({super.key});
 
-    // Not sure if this navigation will work:
-    // final GlobalKey<ScaffoldState> _destinationKey = GlobalKey<ScaffoldState>();
+  @override
+  State<SelectTourMain> createState() => _SelectTourMainState();
+}
 
+class _SelectTourMainState extends State<SelectTourMain> {
+    int selectedIndex = 0;
 
     final List<String> campusTourPlaces = ["Catalyst", "Arts Center", "Tech Hub", "Education Building", "Creative Edge"];
     final List<String> accommodationPlaces = ["Forest Court", "Founders West", "Founders East", "Woodland Court", "Chancellors Court"];
-    final List<String> tourChoice = ["Campus Tour", "Accommodation Tour"];
+    final List<String> tourChoice = ["Main-Tour", "Accommodation"];
 
     @override
     Widget build(BuildContext context){
@@ -103,10 +106,9 @@ class SelectTourMain extends StatelessWidget{
             DropdownMenu<String>(
               initialSelection: "",
               onSelected: (String? value){
-                // setState((){
-                //   dropdownValue = value!;
-                // });
-                // State still needs to be added here
+                setState(() {
+                selectedIndex = tourChoice.indexOf(value!);
+              });
               },
               dropdownMenuEntries: tourChoice.map<DropdownMenuEntry<String>>((String value) {
         return DropdownMenuEntry<String>(value: value, label: value);
@@ -116,7 +118,7 @@ class SelectTourMain extends StatelessWidget{
             Padding(
               padding: const EdgeInsets.only(top: 16.0, left: 6.0, right: 6.0),
               child: ElevatedButton(            
-                onPressed:() => Navigator.push(context, MaterialPageRoute(builder: (context) => const CompassPage(fileName: "locations"))),
+                onPressed:() => Navigator.push(context, MaterialPageRoute(builder: (context) => CompassPage(fileName: tourChoice[selectedIndex]))),
                 // onPressed: () => Navigator.pushNamed(context, '/destinationScreen', arguments: destinationKey,),
                 child: const Text(
                   "Confirm Tour Selection", 
@@ -129,7 +131,7 @@ class SelectTourMain extends StatelessWidget{
         
     );
     }
-  }
+}
 
   AccordionSection CreateAccordionSection(List<String> campusTourPlaces, String accordionName) {
     return AccordionSection(
