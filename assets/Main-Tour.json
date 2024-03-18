@@ -53,55 +53,62 @@
       "latitude": 32.0522,
       "longitude": -168.2437,
       "imageRef": "hub.png",
-      "description": "Description 9"
+      "description": "Description 8"
     },
     {
       "name": "Wilson Centre",
       "latitude": 32.0522,
       "longitude": -168.2437,
       "imageRef": "wilson-centre.jpg",
-      "description": "Description 10"
+      "description": "Description 9"
     },
     {
       "name": "Business School",
       "latitude": 32.0522,
       "longitude": -168.2437,
       "imageRef": "business-school.jpg",
-      "description": "Description 11"
+      "description": "Description 10"
     },
     {
       "name": "Law and Psychology",
       "latitude": 32.0522,
       "longitude": -168.2437,
       "imageRef": "law-psychology.jpg",
-      "description": "Description 12"
+      "description": "Description 11"
     },
     {
       "name": "Geosciences",
       "latitude": 32.0522,
       "longitude": -168.2437,
       "imageRef": "geosciences.jpg",
-      "description": "Description 13"
+      "description": "Description 12"
     },
     {
       "name": "Biosciences",
       "latitude": 32.0522,
       "longitude": -168.2437,
       "imageRef": "biosciences.jpg",
-      "description": "Description 14"
+      "description": "Description 13"
     },
     {
       "name": "Tech Hub",
       "latitude": 32.0522,
       "longitude": -168.2437,
       "imageRef": "tech-hub.jpg",
-      "description": "Description 15"
+      "description": "Description 14"
     },
     {
       "name": "Clinical skills/ Simulation Centre",
       "latitude": 32.0522,
       "longitude": -168.2437,
       "imageRef": "simulation.jpg",
+      "description": "Description 15"
+    },
+    {
+      "name": "Education Building Piazza",
+      "latitude": 32.0522,
+      "longitude": -168.2437,
+      "imageRef": "education-piazza.jpg",
       "description": "Description 16"
     },
     {
@@ -119,45 +126,38 @@
       "description": "Description 18"
     },
     {
-      "name": "Education Building Piazza",
-      "latitude": 32.0522,
-      "longitude": -168.2437,
-      "imageRef": "education-piazza.jpg",
-      "description": "Description 19"
-    },
-    {
       "name": "Education Building Lakeside",
       "latitude": 32.0522,
       "longitude": -168.2437,
       "imageRef": "education-lakeside.jpg",
-      "description": "Description 20"
+      "description": "Description 19"
     },
     {
       "name": "Health/ social care/ medicine",
       "latitude": 32.0522,
       "longitude": -168.2437,
       "imageRef": "medicine.jpg",
-      "description": "Description 21"
+      "description": "Description 20"
     },
     {
       "name": "Arts Centre",
       "latitude": 32.0522,
       "longitude": -168.2437,
       "imageRef": "arts-centre.jpg",
-      "description": "Description 22"
+      "description": "Description 21"
     },
     {
       "name": "Bunnies",
       "latitude": 32.0522,
       "longitude": -168.2437,
       "imageRef": "bunnies.jpg",
-      "description": "Description 23"
+      "description": "Description 22"
     },
     {
       "name": "Main Building",
       "latitude": 32.0522,
       "longitude": -168.2437,
       "imageRef": "main-building.jpg",
-      "description": "Description 24"
+      "description": "Description 23"
     }
   ]
