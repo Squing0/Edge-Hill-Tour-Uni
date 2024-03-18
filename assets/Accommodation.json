@@ -1,50 +1,71 @@
 [   {
       "name": "Main Halls",
-      "latitude": 34.0522,
-      "longitude": -118.2437,
+      "latitude": 53.559326,
+      "longitude": -2.874310,
       "imageRef": "main-halls.jpg",
       "description": "Description 1"
     },
     {
-      "name": "Founders West and East",
-      "latitude": 40.7128,
-      "longitude": -74.0060,
+      "name": "Founders East",
+      "latitude": 53.559499,
+      "longitude": -2.875545,
       "imageRef": "founders-west-east.jpg",
       "description": "Description 2"
     },
     {
-      "name": "Graduates Court",
-      "latitude": 40.7128,
-      "longitude": -74.0060,
-      "imageRef": "graduates-court.jpg",
+      "name": "Founders West",
+      "latitude": 53.560080,
+      "longitude": -2.876252,
+      "imageRef": "founders-west-east.jpg",
       "description": "Description 3"
     },
     {
-      "name": "Woodland Court",
-      "latitude": 32.0522,
-      "longitude": -168.2437,
-      "imageRef": "woodland-court.jpg",
+      "name": "Graduates Court",
+      "latitude": 53.562571,
+      "longitude": -2.877242,
+      "imageRef": "graduates-court.jpg",
       "description": "Description 4"
     },
     {
-      "name": "Chancellors Court",
-      "latitude": 32.0522,
-      "longitude": -168.2437,
-      "imageRef": "chancellors-court.jpg",
+      "name": "Woodland Court",
+      "latitude": 53.55904,
+      "longitude": -2.872213,
+      "imageRef": "woodland-court.jpg",
       "description": "Description 5"
     },
     {
-      "name": "Forest Court",
-      "latitude": 32.0522,
-      "longitude": -168.2437,
-      "imageRef": "forest-court.jpg",
+      "name": "Chancellors Court",
+      "latitude": 53.558916,
+      "longitude": -2.869713,
+      "imageRef": "chancellors-court.jpg",
       "description": "Description 6"
     },
     {
-      "name": "Palatine Court",
-      "latitude": 32.0522,
-      "longitude": -168.2437,
-      "imageRef": "palatine-court.jpg",
+      "name": "Chancellors South",
+      "latitude": 53.558475,
+      "longitude": -2.869578,
+      "imageRef": "chancellors-court.jpg",
       "description": "Description 7"
+    },
+    {
+      "name": "Palatine Court",
+      "latitude": 53.557897,
+      "longitude": -2.872548,
+      "imageRef": "palatine-court.jpg",
+      "description": "Description 8"
+    },
+    {
+      "name": "Forest Court",
+      "latitude": 53.558463,
+      "longitude": -2.872965,
+      "imageRef": "forest-court.jpg",
+      "description": "Description 9"
+    },
+    {
+      "name": "Main Halls",
+      "latitude": 53.559326,
+      "longitude": -2.874310,
+      "imageRef": "main-halls.jpg",
+      "description": "Description 10"
     }
   ]
