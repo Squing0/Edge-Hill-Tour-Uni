@@ -58,7 +58,7 @@ class _CompassPageState extends State<CompassPage> {
               );
             }
 
-            Map<String, dynamic> locationAtIndex = locations[3];
+            Map<String, dynamic> locationAtIndex = locations[0];
             
             return Column(
               children:[
