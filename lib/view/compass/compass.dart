@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/services.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:edge_hill_tour/view_model/home/locationViewModel.dart';
 
 class CompassPage extends StatefulWidget{
@@ -218,7 +219,7 @@ class CompassSection extends StatelessWidget{
 }
 
 class MainInfoSection extends StatelessWidget{
-  const MainInfoSection({super.key, 
+  MainInfoSection({super.key, 
   required this.name, 
   required this.description, 
   required this.imageRef});
@@ -226,6 +227,8 @@ class MainInfoSection extends StatelessWidget{
   final String name;
   final String description;
   final String imageRef;
+
+  final player = AudioPlayer();
 
   @override
   Widget build(BuildContext context){
@@ -254,12 +257,14 @@ class MainInfoSection extends StatelessWidget{
               ]
               
             ),
-            const Padding(
+            Padding(
               padding:    EdgeInsets.only(top: 19),
-              child: Icon(
-               Icons.audio_file,
-              color: Colors.green,
-               size: 30,
+              child: IconButton(
+                icon: Icon(Icons.audio_file),
+                color: Colors.green,
+                onPressed: (){
+                  player.play(UrlSource("assets/trial.mp3"));
+                },
               )
 
             ),           

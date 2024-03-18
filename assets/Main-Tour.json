@@ -1,163 +1,177 @@
 [
     {
       "name": "Main Building",
-      "latitude": 32.0522,
-      "longitude": -168.2437,
+      "latitude": 53.559326,
+      "longitude": -2.874310,
       "imageRef": "main-building.jpg",
       "description": "Description 1"
     },
     {
       "name": "Edge link",
-      "latitude": 34.0522,
-      "longitude": -118.2437,
+      "latitude": 53.558697, 
+      "longitude": -2.873592,
       "imageRef": "edge-link.jpg",
       "description": "Description 2"
     },
     {
       "name": "Catalyst",
-      "latitude": 32.0522,
-      "longitude": -168.2437,
+      "latitude": 53.559620,
+      "longitude": -2.871957,
       "imageRef": "catalyst.jpg",
       "description": "Description 3"
     },
     {
       "name": "Creative Edge",
-      "latitude": 32.0522,
-      "longitude": -168.2437,
+      "latitude": 53.558965,
+      "longitude": -2.870981,
       "imageRef": "creative-edge.jpg",
       "description": "Description 4"
     },
     {
       "name": "Beach",
-      "latitude": 32.0522,
-      "longitude": -168.2437,
+      "latitude": 53.558414, 
+      "longitude": -2.868991,
       "imageRef": "beach.jpg",
       "description": "Description 5"
     },
     {
       "name": "Sports Centre",
-      "latitude": 32.0522,
-      "longitude": -168.2437,
+      "latitude": 53.557342, 
+      "longitude": -2.868453,
       "imageRef": "sports-centre.jpg",
       "description": "Description 6"
     },
     {
       "name": "Sports Pitches",
-      "latitude": 32.0522,
-      "longitude": -168.2437,
+      "latitude": 53.559057, 
+      "longitude": -2.868183,
       "imageRef": "sports-pitches.jpg",
       "description": "Description 7"
     },
     {
-      "name": "The Hub",
-      "latitude": 32.0522,
-      "longitude": -168.2437,
-      "imageRef": "hub.png",
+      "name": "Durning Centre",
+      "latitude": 53.560382, 
+      "longitude": -2.870415,
+      "imageRef": "durning.png",
       "description": "Description 8"
     },
     {
-      "name": "Wilson Centre",
-      "latitude": 32.0522,
-      "longitude": -168.2437,
-      "imageRef": "wilson-centre.jpg",
+      "name": "Post room",
+      "latitude": 53.559876, 
+      "longitude": -2.870039,
+      "imageRef": "post.png",
       "description": "Description 9"
     },
     {
-      "name": "Business School",
-      "latitude": 32.0522,
-      "longitude": -168.2437,
-      "imageRef": "business-school.jpg",
+      "name": "The Hub",
+      "latitude": 53.559595, 
+      "longitude": -2.872925,
+      "imageRef": "hub.png",
       "description": "Description 10"
     },
     {
-      "name": "Law and Psychology",
-      "latitude": 32.0522,
-      "longitude": -168.2437,
-      "imageRef": "law-psychology.jpg",
+      "name": "Wilson Centre",
+      "latitude": 53.559909, 
+      "longitude": -2.872646,
+      "imageRef": "wilson-centre.jpg",
       "description": "Description 11"
     },
     {
-      "name": "Geosciences",
-      "latitude": 32.0522,
-      "longitude": -168.2437,
-      "imageRef": "geosciences.jpg",
+      "name": "Business School",
+      "latitude": 53.560401, 
+      "longitude": -2.873583,
+      "imageRef": "business-school.jpg",
       "description": "Description 12"
     },
     {
-      "name": "Biosciences",
-      "latitude": 32.0522,
-      "longitude": -168.2437,
-      "imageRef": "biosciences.jpg",
+      "name": "Law and Psychology",
+      "latitude": 53.560983, 
+      "longitude": -2.874460,
+      "imageRef": "law-psychology.jpg",
       "description": "Description 13"
     },
     {
-      "name": "Tech Hub",
-      "latitude": 32.0522,
-      "longitude": -168.2437,
-      "imageRef": "tech-hub.jpg",
+      "name": "Geosciences",
+      "latitude": 53.561104, 
+      "longitude": -2.874136,
+      "imageRef": "geosciences.jpg",
       "description": "Description 14"
     },
     {
-      "name": "Clinical skills/ Simulation Centre",
-      "latitude": 32.0522,
-      "longitude": -168.2437,
-      "imageRef": "simulation.jpg",
+      "name": "Biosciences",
+      "latitude": 53.561402, 
+      "longitude": -2.873428,
+      "imageRef": "biosciences.jpg",
       "description": "Description 15"
     },
     {
-      "name": "Education Building Piazza",
-      "latitude": 32.0522,
-      "longitude": -168.2437,
-      "imageRef": "education-piazza.jpg",
+      "name": "Tech Hub",
+      "latitude": 53.561841, 
+      "longitude": -2.873002,
+      "imageRef": "tech-hub.jpg",
       "description": "Description 16"
     },
     {
-      "name": "Ducks!",
-      "latitude": 32.0522,
-      "longitude": -168.2437,
-      "imageRef": "ducks.jpg",
+      "name": "Clinical skills/ Simulation Centre",
+      "latitude": 53.561227, 
+      "longitude": -2.874733,
+      "imageRef": "simulation.jpg",
       "description": "Description 17"
     },
     {
-      "name": "Campus Cat",
-      "latitude": 32.0522,
-      "longitude": -168.2437,
-      "imageRef": "campus-cat.jpg",
+      "name": "Education Building Piazza",
+      "latitude": 53.561480, 
+      "longitude": -2.874709,
+      "imageRef": "education-piazza.jpg",
       "description": "Description 18"
     },
     {
-      "name": "Education Building Lakeside",
-      "latitude": 32.0522,
-      "longitude": -168.2437,
-      "imageRef": "education-lakeside.jpg",
+      "name": "Ducks!",
+      "latitude": 53.561409, 
+      "longitude": -2.875209,
+      "imageRef": "ducks.jpg",
       "description": "Description 19"
     },
     {
-      "name": "Health/ social care/ medicine",
-      "latitude": 32.0522,
-      "longitude": -168.2437,
-      "imageRef": "medicine.jpg",
+      "name": "Campus Cat",
+      "latitude": 53.561859, 
+      "longitude": -2.875050,
+      "imageRef": "campus-cat.jpg",
       "description": "Description 20"
     },
     {
-      "name": "Arts Centre",
-      "latitude": 32.0522,
-      "longitude": -168.2437,
-      "imageRef": "arts-centre.jpg",
+      "name": "Education Building Lakeside",
+      "latitude": 53.562071, 
+      "longitude": -2.876163,
+      "imageRef": "education-lakeside.jpg",
       "description": "Description 21"
     },
     {
-      "name": "Bunnies",
-      "latitude": 32.0522,
-      "longitude": -168.2437,
-      "imageRef": "bunnies.jpg",
+      "name": "Health/ social care/ medicine",
+      "latitude": 53.561594, 
+      "longitude": -2.876235,
+      "imageRef": "medicine.jpg",
       "description": "Description 22"
     },
     {
-      "name": "Main Building",
-      "latitude": 32.0522,
-      "longitude": -168.2437,
-      "imageRef": "main-building.jpg",
+      "name": "Arts Centre",
+      "latitude": 53.560067, 
+      "longitude": -2.876116,
+      "imageRef": "arts-centre.jpg",
       "description": "Description 23"
+    },
+    {
+      "name": "Bunnies",
+      "latitude": 53.560504, 
+      "longitude": -2.875574,
+      "imageRef": "bunnies.jpg",
+      "description": "Description 24"
+    },
+    {
+      "name": "Main Building",
+      "latitude": 53.559326,
+      "longitude": -2.874310,
+      "imageRef": "main-building.jpg",
+      "description": "Description 25"
     }
   ]
