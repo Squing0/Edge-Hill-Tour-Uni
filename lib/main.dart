@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:edge_hill_tour/jsonTest.dart';
-import 'package:edge_hill_tour/view/compass/compass.dart';
 import 'package:edge_hill_tour/view/home/homePage.dart';
-import 'package:edge_hill_tour/view/select_tour/selectTour.dart';
+import 'package:edge_hill_tour/geolocatorTrial.dart';
+import 'package:geolocator/geolocator.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,14 +12,44 @@ void main() {
     ]);
 
   runApp(
-    // const Center(child: Text(
-    //   "Hello, worl!",
-    //   textDirection: TextDirection.ltr,
-    // ),)   
-    HomePage(),
+    MyApp5() 
   );
 }
 
+Position? position;
+
+getCurrentPosition() async { 
+    position = await Geolocator.getCurrentPosition( 
+        desiredAccuracy: LocationAccuracy.high); 
+    return position; 
+  } 
+
+
+Future<Position> _determinePosition() async {
+  bool serviceEnabled;
+  LocationPermission permission;
+
+  // Test if location services are enabled.
+  serviceEnabled = await Geolocator.isLocationServiceEnabled();
+  if (!serviceEnabled) {
+    return Future.error('Location services are disabled.');
+  }
+
+  permission = await Geolocator.checkPermission();
+  if (permission == LocationPermission.denied) {
+    permission = await Geolocator.requestPermission();
+    if (permission == LocationPermission.denied) {
+      return Future.error('Location permissions are denied');
+    }
+  }
+  
+  if (permission == LocationPermission.deniedForever) {
+    return Future.error(
+      'Location permissions are permanently denied, we cannot request permissions.');
+  } 
+
+  return await Geolocator.getCurrentPosition();
+}
 class MyApp extends StatelessWidget{
   const MyApp({super.key});
 

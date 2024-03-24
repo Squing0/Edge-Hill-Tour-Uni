@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/services.dart';
 import 'package:audioplayers/audioplayers.dart';
-import 'package:edge_hill_tour/view_model/home/locationViewModel.dart';
 
 class CompassPage extends StatefulWidget{
   const CompassPage({super.key, required this.fileName});
@@ -74,7 +73,7 @@ class _CompassPageState extends State<CompassPage> {
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  CompassSection(),
+                                  const CompassSection(),
                                   MainInfoSection(name: locationAtIndex['name'] ?? '', imageRef: locationAtIndex['imageRef'] ?? '', description: locationAtIndex['description'] ?? ''),
                                 ]
                               )
@@ -102,7 +101,7 @@ class _CompassPageState extends State<CompassPage> {
   }
 
   Future<List<dynamic>> loadJsonFile() async {
-    String jsonString = await rootBundle.loadString("assets/" + fileName2 + ".json");
+    String jsonString = await rootBundle.loadString("assets/$fileName2.json");
     return json.decode(jsonString);
   }
 }
@@ -247,7 +246,7 @@ class MainInfoSection extends StatelessWidget{
               children:[
                 SizedBox(
                   height: 200,
-                child: Image.asset("images/" + imageRef, fit: BoxFit.contain),
+                child: Image.asset("images/$imageRef", fit: BoxFit.contain),
                 ),
             // Icon(
             //   Icons.audio_file,
@@ -258,9 +257,9 @@ class MainInfoSection extends StatelessWidget{
               
             ),
             Padding(
-              padding:    EdgeInsets.only(top: 19),
+              padding:    const EdgeInsets.only(top: 19),
               child: IconButton(
-                icon: Icon(Icons.audio_file),
+                icon: const Icon(Icons.audio_file),
                 color: Colors.green,
                 onPressed: (){
                   player.play(UrlSource("assets/trial.mp3"));

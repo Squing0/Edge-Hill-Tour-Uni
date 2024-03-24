@@ -21,7 +21,7 @@ class SelectTourPage extends StatelessWidget{
           brightness: Brightness.dark,
           ),
     ),
-    home: SelectTourMain(),
+    home: const SelectTourMain(),
     //   appBar: AppBar(
     //       title: const Text("Tour Selection"),
     //       backgroundColor: const Color.fromARGB(255, 5, 142, 24),
@@ -70,7 +70,7 @@ class SelectTourPage extends StatelessWidget{
 }
 
 class SelectTourMain extends StatefulWidget{
-    SelectTourMain({super.key});
+    const SelectTourMain({super.key});
 
   @override
   State<SelectTourMain> createState() => _SelectTourMainState();
