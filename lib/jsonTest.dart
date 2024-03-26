@@ -84,7 +84,7 @@ class YourWidget extends StatelessWidget {
               );
             }
 
-            Map<String, dynamic> locationAtIndex = locations[4];
+            Map<String, dynamic> locationAtIndex = locations[currentIndex];
 return Column(
                 children: [
                   Expanded(
@@ -143,7 +143,7 @@ return Column(
 
 
   Future<List<dynamic>> loadJsonFile() async {
-    String jsonString = await rootBundle.loadString('assets/locations.json');
+    String jsonString = await rootBundle.loadString('assets/Main-Tour.json');
     return json.decode(jsonString);
   }
 }
@@ -245,7 +245,7 @@ class _YourWidgetState extends State<YourWidget2> {
   }
 
   Future<List<dynamic>> loadJsonFile() async {
-    String jsonString = await rootBundle.loadString('assets/locations.json');
+    String jsonString = await rootBundle.loadString('assets/Main-Tour.json');
     return json.decode(jsonString);
   }
 }

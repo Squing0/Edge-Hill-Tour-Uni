@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:flutter/services.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:geolocator/geolocator.dart';
 
 class CompassPage extends StatefulWidget{
   const CompassPage({super.key, required this.fileName});
@@ -17,9 +17,61 @@ class CompassPage extends StatefulWidget{
 
 class _CompassPageState extends State<CompassPage> {
   String fileName2 = "";
+  int currentIndex = 0;
+  final double targetRadius = 100;
+  Position? _currentPosition;
 
    _CompassPageState(String fileName) {
     fileName2 = fileName;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _getCurrentLocation();
+  }
+
+// GPT CODE FOR CHANGING STATE WITH RADIUS
+  _checkDistance(Position currentPosition) {
+    List<dynamic> locations = []; // Load locations from JSON file
+    Map<String, dynamic> currentLocation = locations[currentIndex + 1];
+
+    double targetLatitude = currentLocation['latitude']; // Get latitude of current location
+    double targetLongitude = currentLocation['longitude']; // Get longitude of current location
+
+    double distanceInMeters = Geolocator.distanceBetween(
+      currentPosition.latitude,
+      currentPosition.longitude,
+      targetLatitude,
+      targetLongitude,
+    );
+
+    if (distanceInMeters <= targetRadius) {
+      // User is within the specified radius
+      setState(() {
+        currentIndex++; // Increase index by 1
+      });
+    }
+  } 
+
+
+
+  _getCurrentLocation() async {
+    await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.high,
+    ).then((Position position) {
+      setState(() {
+        _currentPosition = position;
+        _checkDistance(_currentPosition!); // Call _checkDistance here
+      });
+    }).catchError((e) {
+      print(e);
+    });
+  }
+
+      Future<List<dynamic>> loadJsonFile() async {
+    String jsonString = await rootBundle.loadString("assets/$fileName2.json");
+    return json.decode(jsonString);
   }
 
   @override
@@ -58,7 +110,7 @@ class _CompassPageState extends State<CompassPage> {
               );
             }
 
-            Map<String, dynamic> locationAtIndex = locations[22];
+            Map<String, dynamic> locationAtIndex = locations[currentIndex];
             
             return Column(
               children:[
@@ -100,72 +152,18 @@ class _CompassPageState extends State<CompassPage> {
 
   }
 
-  Future<List<dynamic>> loadJsonFile() async {
-    String jsonString = await rootBundle.loadString("assets/$fileName2.json");
-    return json.decode(jsonString);
-  }
+
+
+
+
+
+
+
+
+
+  
 }
 
-
-            // return Center(
-            //   child:SingleChildScrollView(
-            //   child: 
-            //   SizedBox(
-            //     height: 900,
-            //     child: Column(
-            //     // mainAxisSize: MainAxisSize.max,
-            //     children:[
-            //        const CompassSection(),                
-            //        const MainInfoSection(),  
-            //                    ElevatedButton(            
-            //       onPressed: () =>  Navigator.pop(context),
-            //       child: const Text(
-            //         "Back to tour selection", 
-            //         style: TextStyle(fontSize: 20, color: Colors.white),
-            //         ),
-            //     ),
-            //     ]
-            //   ),
-            //   )
-            //   )
-            //   );
-
-class CompassPageMain extends StatelessWidget{
-    const CompassPageMain({super.key});
-
-    @override
-    Widget build(BuildContext context){
-      return Scaffold(
-        // resizeToAvoidBottomInset: false,
-        appBar: AppBar(
-          title: const Text("Compass Page"),
-          backgroundColor: const Color.fromARGB(255, 5, 142, 24),
-        ),
-        body: Center(
-          child:SingleChildScrollView(
-          child: 
-          SizedBox(
-            height: 900,
-            child: Column(
-            // mainAxisSize: MainAxisSize.max,
-            children:[
-               const CompassSection(),                
-              //  const MainInfoSection(),  
-               ElevatedButton(            
-              onPressed: () =>  Navigator.pop(context),
-              child: const Text(
-                "Back to tour selection", 
-                style: TextStyle(fontSize: 20, color: Colors.white),
-                ),
-            ),
-            ]
-          ),
-          )
-          )
-          )
-      );
-    }
-  }
 
 class ImageSection extends StatelessWidget{
   const ImageSection({super.key, required this.image, required this.height});
@@ -184,23 +182,6 @@ class ImageSection extends StatelessWidget{
   }
 }
 
-class SvgSection extends StatelessWidget{
-  const SvgSection({super.key, required this.image});
-
-  final String image;
-
-  @override
-  Widget build(BuildContext context){
-    return SvgPicture.asset(
-      image,
-      height: 120, width: 120,
-      fit: BoxFit.scaleDown,
-      semanticsLabel: "Compass",
-    );
-  }
-}
-
-
 class CompassSection extends StatelessWidget{
   const CompassSection({super.key});
 
@@ -209,9 +190,6 @@ class CompassSection extends StatelessWidget{
     return  Stack(
       children: <Widget>[
         Image.asset("images/campusBirdsEye.jpg", fit: BoxFit.contain),
-        // Center(
-        //   child: SvgSection(image: "images/compass.svg"),
-        //   )
       ]
     );
   }
@@ -247,12 +225,7 @@ class MainInfoSection extends StatelessWidget{
                 SizedBox(
                   height: 200,
                 child: Image.asset("images/$imageRef", fit: BoxFit.contain),
-                ),
-            // Icon(
-            //   Icons.audio_file,
-            //   color: Colors.green,
-            //   size: 30,
-            //   ),              
+                ),           
               ]
               
             ),
@@ -267,16 +240,7 @@ class MainInfoSection extends StatelessWidget{
               )
 
             ),           
-            TextSection(description: description),
-
-            // ElevatedButton(            
-            //   onPressed: () =>  Navigator.pop(context),
-            //   child: const Text(
-            //     "Back to tour selection", 
-            //     style: TextStyle(fontSize: 20, color: Colors.white),
-            //     ),
-            // ),
-            
+            TextSection(description: description),           
           ]
         )
       )

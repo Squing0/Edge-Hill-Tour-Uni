@@ -1,9 +1,11 @@
+import 'package:edge_hill_tour/view/compass/compass.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:edge_hill_tour/view/home/homePage.dart';
 import 'package:edge_hill_tour/geolocatorTrial.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:edge_hill_tour/smooth_compass_trial.dart';
+import 'package:edge_hill_tour/jsonTest.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,7 +15,7 @@ void main() {
     ]);
 
   runApp(
-    CompassApp()
+    CompassPage(fileName: 'Main-Tour',)
   );
 }
 
