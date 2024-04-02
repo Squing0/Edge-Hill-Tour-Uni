@@ -85,17 +85,6 @@ class _CompassAppState extends State<CompassApp> {
   double _currentLongitude = -2.8880910;
   double ?_bearing = 0.0;
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   _getLocation();
-  //   FlutterCompass.events.listen((double heading) {
-  //     setState(() {
-  //       _bearing = event.heading;
-  //     });
-  //   });
-  // }
-
    @override
   void initState(){
     // implement initState
@@ -106,7 +95,6 @@ class _CompassAppState extends State<CompassApp> {
     });
   }
   
-
   void _getLocation() async {
     Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);

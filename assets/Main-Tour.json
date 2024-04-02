@@ -4,12 +4,12 @@
       "latitude": 53.559326,
       "longitude": -2.874310,
       "imageRef": "main-building.jpg",
-      "description": "Description 1"
+      "description": "The main entrance to the Edge Hill campus, the main building is also an accommodation option which recently had a refurbishment in 2022."
     },
     {
       "name": "Edge link",
-      "latitude": 53.5654604, 
-      "longitude": -2.8881168,
+      "latitude": 53.558723, 
+      "longitude": -2.873582,
       "imageRef": "edge-link.jpg",
       "description": "Description 2"
     },

@@ -15,7 +15,8 @@ void main() {
     ]);
 
   runApp(
-    CompassPage(fileName: 'Main-Tour',)
+    // CompassPage(fileName: 'Main-Tour',)
+    MyApp8()
   );
 }
 
