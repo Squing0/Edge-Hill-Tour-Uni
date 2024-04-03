@@ -25,6 +25,7 @@ class _CompassPageState extends State<CompassPage> {
   Position? _currentPosition; // Tried late but did not work here
   Stream<Position>? _positionStream; // Use Stream<Position> to continuously update location
   List<dynamic>? locations;
+  double? heading = 0; // COMPASS
 
    _CompassPageState(String fileName) {
     fileName2 = fileName;
@@ -36,6 +37,11 @@ class _CompassPageState extends State<CompassPage> {
     _getCurrentLocation();
     _positionStream = Geolocator.getPositionStream(); // Initialize the position stream
     loadLocations();
+
+    FlutterCompass.events!.listen((event) {setState(() {  // COMPASS
+      heading = event.heading;
+    });
+    });
   }
 
 
@@ -104,7 +110,17 @@ class _CompassPageState extends State<CompassPage> {
               Expanded(
                 child: ListView(
                   children: [
-                    CompassSection(),
+                    // CompassSection(),
+                    Stack(                     
+            alignment: Alignment.center,
+            children:[
+              Image.asset("images/cadrant.png", scale: 1),
+              Transform.rotate(
+                angle: ((heading ?? 0) * (math.pi / 180) * -1),
+                child: Image.asset("images/compass.png")
+                ),
+            ]
+          )    ,
                     MainInfoSection(
                       name: locations![currentIndex]['name'] ?? '',
                       imageRef: locations![currentIndex]['imageRef'] ?? '',
@@ -129,7 +145,7 @@ class _CompassPageState extends State<CompassPage> {
                           return CircularProgressIndicator();
                         }
                       },
-                    ),                 
+                    ),                                
                   ],
                 ),
               ),

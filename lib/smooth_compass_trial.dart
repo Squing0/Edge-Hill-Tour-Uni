@@ -23,22 +23,79 @@ class HomeScreen extends StatefulWidget{
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen>{
-  // Setting compass
+// class _HomeScreenState extends State<HomeScreen>{
+//   // Setting compass
+//   double? heading = 0;
+
+//   @override
+//   void initState(){
+//     // implement initState
+//     super.initState();
+//     FlutterCompass.events!.listen((event) {setState(() {
+//       heading = event.heading;
+//     });
+//     });
+//   }
+
+class _HomeScreenState extends State<HomeScreen> {
   double? heading = 0;
+  double smoothHeading = 0;
 
   @override
-  void initState(){
-    // implement initState
+  void initState() {
     super.initState();
-    FlutterCompass.events!.listen((event) {setState(() {
-      heading = event.heading;
-    });
+    FlutterCompass.events!.listen((event) {
+      setState(() {
+        heading = event.heading;
+        smoothHeading = _smoothHeading(event.heading);
+      });
     });
   }
 
+  double _smoothHeading(double? newHeading) {
+    // Smoothing logic can be implemented here
+    // For simplicity, a moving average over 3 readings is used
+    smoothHeading = (smoothHeading * 2 + (newHeading ?? 0)) / 3;
+    return smoothHeading;
+  }
+
+  // @override
+  // Widget build(BuildContext context){
+  //   return Scaffold(
+  //     backgroundColor: Colors.black,
+  //     appBar: AppBar(
+  //       backgroundColor: Colors.grey.shade900,
+  //       centerTitle: true,
+  //       title: Text("Compass App", style: TextStyle(color: Colors.white)),
+  //     ),
+  //     body: Column(
+  //       mainAxisAlignment: MainAxisAlignment.center,
+  //       crossAxisAlignment: CrossAxisAlignment.center,
+  //       children:[
+  //         Text("${heading!.ceil()}", 
+  //         style: TextStyle(color: Colors.white, fontSize: 26, fontWeight: FontWeight.bold)),
+  //         SizedBox(height: 50,),
+  //         //Showing compass
+  //         Padding(padding: EdgeInsets.all(18),
+  //         child: Stack(
+  //           alignment: Alignment.center,
+  //           children:[
+  //             Image.asset("images/cadrant.png"),
+  //             Transform.rotate(
+  //               angle: ((heading ?? 0) * (math.pi / 180) * -1),
+  //               child: Image.asset("images/compass.png", scale: 1.1)
+  //               ),
+  //           ]
+  //         )
+  //         )
+  //       ]
+  //     )
+
+  //   );
+  // }
+
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -47,28 +104,27 @@ class _HomeScreenState extends State<HomeScreen>{
         title: Text("Compass App", style: TextStyle(color: Colors.white)),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children:[
-          Text("${heading!.ceil()}", 
-          style: TextStyle(color: Colors.white, fontSize: 26, fontWeight: FontWeight.bold)),
-          SizedBox(height: 50,),
-          //Showing compass
-          Padding(padding: EdgeInsets.all(18),
-          child: Stack(
-            alignment: Alignment.center,
-            children:[
-              Image.asset("images/cadrant.png"),
-              Transform.rotate(
-                angle: ((heading ?? 0) * (math.pi / 180) * -1),
-                child: Image.asset("images/compass.png", scale: 1.1)
-                ),
-            ]
-          )
-          )
-        ]
-      )
-
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text("${smoothHeading.ceil()}",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 26,
+                    fontWeight: FontWeight.bold)),
+            SizedBox(
+              height: 50,
+            ),
+            //Showing compass
+            Padding(
+                padding: EdgeInsets.all(18),
+                child: Stack(alignment: Alignment.center, children: [
+                  Image.asset("images/cadrant.png"),
+                  Transform.rotate(
+                      angle: ((smoothHeading ?? 0) * (math.pi / 180) * -1),
+                      child: Image.asset("images/compass.png", scale: 1.1)),
+                ]))
+          ]),
     );
   }
 }
