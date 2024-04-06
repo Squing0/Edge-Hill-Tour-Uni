@@ -6,6 +6,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:flutter_compass/flutter_compass.dart';
 import 'dart:math' as math;
 import 'package:vector_math/vector_math.dart' as vector;
+import 'package:sensors_plus/sensors_plus.dart';
 
 class CompassPage extends StatefulWidget{
   const CompassPage({super.key, required this.fileName});
@@ -111,16 +112,16 @@ class _CompassPageState extends State<CompassPage> {
                 child: ListView(
                   children: [
                     // CompassSection(),
-                    Stack(                     
-            alignment: Alignment.center,
-            children:[
-              Image.asset("images/cadrant.png", scale: 1),
-              Transform.rotate(
-                angle: ((heading ?? 0) * (math.pi / 180) * -1),
-                child: Image.asset("images/compass.png")
-                ),
-            ]
-          )    ,
+          //           Stack(                     
+          //   alignment: Alignment.center,
+          //   children:[
+          //     Image.asset("images/cadrant.png", scale: 1),
+          //     Transform.rotate(
+          //       angle: ((heading ?? 0) * (math.pi / 180) * -1),
+          //       child: Image.asset("images/compass.png")
+          //       ),
+          //   ]
+          // )    ,
                     MainInfoSection(
                       name: locations![currentIndex]['name'] ?? '',
                       imageRef: locations![currentIndex]['imageRef'] ?? '',
@@ -172,38 +173,6 @@ class _CompassPageState extends State<CompassPage> {
     );
   }
 
-
-
-
-
-
-  double _calculateBearing(
-    double startLat,
-    double startLng,
-    double endLat,
-    double endLng,
-  ) {
-    double dLng = _toRadians(endLng - startLng);
-    double startLatRadians = _toRadians(startLat);
-    double endLatRadians = _toRadians(endLat);
-
-    double y = math.sin(dLng) * math.cos(endLatRadians);
-    double x = math.cos(startLatRadians) * math.sin(endLatRadians) -
-        math.sin(startLatRadians) * math.cos(endLatRadians) * math.cos(dLng);
-
-    double bearing = math.atan2(y, x);
-    return (_toDegrees(bearing) + 360) % 360;
-  }
-
-  double _toRadians(double degree) {
-    return degree * (math.pi / 180);
-  }
-
-  double _toDegrees(double radian) {
-    return radian * (180 / math.pi);
-  }
-
-
 }
 
 
@@ -233,7 +202,66 @@ class ImageSection extends StatelessWidget{
   }
 }
 
-class DistanceFromCurrentLocation extends StatelessWidget {
+// class DistanceFromCurrentLocation extends StatelessWidget {
+//   final Position currentPosition;
+//   final double destinationLatitude;
+//   final double destinationLongitude;
+
+//   DistanceFromCurrentLocation({
+//     required this.currentPosition,
+//     required this.destinationLatitude,
+//     required this.destinationLongitude,
+//   });
+
+//   @override
+//   Widget build(BuildContext context) {
+//     if (currentPosition == null) {
+//       return Container(
+//         padding: EdgeInsets.all(20.0),
+//         child: Text('Current position not available'),
+//       );
+//     }
+
+//     double distanceInMeters = Geolocator.distanceBetween(
+//       currentPosition.latitude,
+//       currentPosition.longitude,
+//       destinationLatitude,
+//       destinationLongitude,
+//     );
+
+//     double distanceInKm = distanceInMeters / 1000;
+
+//     double targetAngle = math.atan2(
+//       destinationLongitude - currentPosition.longitude,
+//       destinationLatitude - currentPosition.latitude,
+//     ) *
+//         (180 / math.pi);
+
+
+//     return Container(
+//       padding: const EdgeInsets.only(left: 10.0,top: 20,right: 10,bottom: 10),
+//       child: Column(
+//         crossAxisAlignment: CrossAxisAlignment.start,
+//         children: [
+//           Text('Distance from Current Location: ${distanceInMeters.toStringAsFixed(2)} metres', 
+//           style: TextStyle(fontSize: 15, fontStyle: FontStyle.italic)),
+//           Stack(
+//             alignment: Alignment.center,
+//             children: [
+//               Image.asset("images/cadrant.png", scale: 1),
+//               Transform.rotate(
+//                 angle: ((targetAngle) * (math.pi / 180) * -1),
+//                 child: Image.asset("images/compass.png"),
+//               ),
+//             ],
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
+
+class DistanceFromCurrentLocation extends StatefulWidget {
   final Position currentPosition;
   final double destinationLatitude;
   final double destinationLongitude;
@@ -245,8 +273,31 @@ class DistanceFromCurrentLocation extends StatelessWidget {
   });
 
   @override
+  _DistanceFromCurrentLocationState createState() =>
+      _DistanceFromCurrentLocationState();
+}
+
+class _DistanceFromCurrentLocationState
+    extends State<DistanceFromCurrentLocation> {
+  double _heading = 0; // Compass heading from Flutter Compass
+
+  @override
+  void initState() {
+    super.initState();
+    _startListeningCompass();
+  }
+
+  void _startListeningCompass() {
+    FlutterCompass.events!.listen((event) {
+      setState(() {
+        _heading = event.heading!;
+      });
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
-    if (currentPosition == null) {
+    if (widget.currentPosition == null) {
       return Container(
         padding: EdgeInsets.all(20.0),
         child: Text('Current position not available'),
@@ -254,26 +305,58 @@ class DistanceFromCurrentLocation extends StatelessWidget {
     }
 
     double distanceInMeters = Geolocator.distanceBetween(
-      currentPosition.latitude,
-      currentPosition.longitude,
-      destinationLatitude,
-      destinationLongitude,
+      widget.currentPosition.latitude,
+      widget.currentPosition.longitude,
+      widget.destinationLatitude,
+      widget.destinationLongitude,
     );
 
     double distanceInKm = distanceInMeters / 1000;
 
+    double targetAngle = math.atan2(
+          widget.destinationLongitude - widget.currentPosition.longitude,
+          widget.destinationLatitude - widget.currentPosition.latitude,
+        ) *
+        (180 / math.pi);
+
+    // Calculate the rotation angle for the compass needle
+    double rotationAngle = targetAngle - (_heading ?? 0);
+
     return Container(
-      padding: const EdgeInsets.only(left: 10.0,top: 20,right: 10,bottom: 10),
+      padding:
+          const EdgeInsets.only(left: 10.0, top: 20, right: 10, bottom: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Distance from Current Location: ${distanceInMeters.toStringAsFixed(2)} metres', 
-          style: TextStyle(fontSize: 15, fontStyle: FontStyle.italic)),
+          Text(
+            'Distance from Current Location: ${distanceInMeters.toStringAsFixed(2)} meters',
+            style: TextStyle(fontSize: 15, fontStyle: FontStyle.italic),
+          ),
+          SizedBox(height: 20),
+          Stack(
+            alignment: Alignment.center,
+            children: [
+              Image.asset("images/cadrant.png", scale: 1),
+              Transform.rotate(
+                angle: ((rotationAngle) * (math.pi / 180) * -1),
+                child: Image.asset("images/compass.png"),
+              ),
+            ],
+          ),
         ],
       ),
     );
   }
 }
+
+
+
+
+
+
+
+
+
 
 class CompassSection extends StatelessWidget{
   const CompassSection({super.key});
