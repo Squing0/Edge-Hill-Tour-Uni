@@ -9,9 +9,6 @@ class SelectTourPage extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     const title = "Tour Selection";
-    List<String> campusTourPlaces = ["Catalyst", "Arts Center", "Tech Hub", "Education Building", "Creative Edge"];
-    List<String> accommodationPlaces = ["Forest Court", "Founders West", "Founders East", "Woodland Court", "Chancellors Court"];
-    List<String> tourChoice = ["Main-Tour", "Accommodation"];
 
     return MaterialApp(
       title: title,
@@ -22,49 +19,6 @@ class SelectTourPage extends StatelessWidget{
           ),
     ),
     home: const SelectTourMain(),
-    //   appBar: AppBar(
-    //       title: const Text("Tour Selection"),
-    //       backgroundColor: const Color.fromARGB(255, 5, 142, 24),
-    //     ),
-    //     body: 
-    //     ListView(
-    //       padding: const EdgeInsets.only(top: 5, bottom: 5),
-    //       children: <Widget>[
-    //         Accordion(
-    //           header: const Text("Accordion"),
-    //           children:[
-    //             CreateAccordionSection(campusTourPlaces, tourChoice[0]),
-    //             CreateAccordionSection(accommodationPlaces, tourChoice[1]),
-    //           ]
-              
-    //         ),
-    //         DropdownMenu<String>(
-    //           initialSelection: "",
-    //           onSelected: (String? value){
-    //             // setState((){
-    //             //   dropdownValue = value!;
-    //             // });
-    //             // State still needs to be added here
-    //           },
-    //           dropdownMenuEntries: tourChoice.map<DropdownMenuEntry<String>>((String value) {
-    //     return DropdownMenuEntry<String>(value: value, label: value);
-    //   }).toList(),
-
-    //         ),
-    //         const Padding(
-    //           padding: const EdgeInsets.only(top: 16.0, left: 6.0, right: 6.0),
-    //           child: const ElevatedButton(            
-    //             onPressed: null,
-    //             child: const Text(
-    //               "Confirm Tour Selection", 
-    //               style: TextStyle(fontSize: 20, color: Colors.white),
-    //               ),
-    //           ),
-    //         ),
-    //       ]
-    //     ),
-        
-    // )
     );
   }
 }
@@ -81,29 +35,51 @@ class _SelectTourMainState extends State<SelectTourMain> {
 
     final List<String> campusTourPlaces = ["Catalyst", "Arts Center", "Tech Hub", "Education Building", "Creative Edge"];
     final List<String> accommodationPlaces = ["Forest Court", "Founders West", "Founders East", "Woodland Court", "Chancellors Court"];
-    final List<String> tourChoice = ["Main-Tour", "Accommodation"];
+    final List<String> tourChoice = ["", "Main-Tour", "Accommodation"];
 
     @override
     Widget build(BuildContext context){
       return Scaffold(
-      // key: _destinationKey,  
-      appBar: AppBar(
-          title: const Text("Tour Selection"),
-          backgroundColor: const Color.fromARGB(255, 5, 142, 24),
+        appBar: AppBar(
+          title: const Text("Edge Hill Tour", style: TextStyle(color: Colors.white, fontSize: 40, fontWeight: FontWeight.w700)),
+          backgroundColor: Color.fromARGB(255, 28, 27, 31),
+          centerTitle: true,
         ),
         body: 
         ListView(
           padding: const EdgeInsets.only(top: 5, bottom: 5),
-          children: <Widget>[
-            Accordion(
-              header: const Text("Accordion"),
-              children:[
-                CreateAccordionSection(campusTourPlaces, tourChoice[0]),
-                CreateAccordionSection(accommodationPlaces, tourChoice[1]),
-              ]
-              
+          children: <Widget>[         
+           Container(
+          height: 300,
+          alignment: Alignment.center,
+          child: const Column(children: [
+            ]) ,
+          ),
+            Padding(
+              padding: const EdgeInsets.only(top: 1.0, left: 6.0, right: 6.0, bottom: 20.0),
+              child: ElevatedButton(            
+                // onPressed:() => Navigator.push(context, MaterialPageRoute(builder: (context) => CompassPage(fileName: tourChoice[selectedIndex]))),
+                onPressed: () {
+                if (selectedIndex > 0) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          CompassPage(fileName: tourChoice[selectedIndex]),
+                    ),
+                  );
+                } 
+              },
+                child: const Text(
+                  "Select Tour", 
+                  style: TextStyle(fontSize: 45, color: Colors.white),
+                  ),
+              ),
             ),
-            DropdownMenu<String>(
+            Container(
+            alignment: Alignment.center,
+            child:
+            DropdownMenu<String>(            
               initialSelection: "",
               onSelected: (String? value){
                 setState(() {
@@ -115,17 +91,9 @@ class _SelectTourMainState extends State<SelectTourMain> {
       }).toList(),
 
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 16.0, left: 6.0, right: 6.0),
-              child: ElevatedButton(            
-                onPressed:() => Navigator.push(context, MaterialPageRoute(builder: (context) => CompassPage(fileName: tourChoice[selectedIndex]))),
-                // onPressed: () => Navigator.pushNamed(context, '/destinationScreen', arguments: destinationKey,),
-                child: const Text(
-                  "Confirm Tour Selection", 
-                  style: TextStyle(fontSize: 20, color: Colors.white),
-                  ),
-              ),
-            ),
+            )
+            
+            
           ]
         ),
         

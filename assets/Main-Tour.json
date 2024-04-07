@@ -4,174 +4,199 @@
       "latitude": 53.559326,
       "longitude": -2.874310,
       "imageRef": "main-building.jpg",
-      "description": "The main entrance to the Edge Hill campus, the main building is also an accommodation option which recently had a refurbishment in 2022."
+      "description": "The main entrance to the Edge Hill campus, the main building is also an accommodation option which recently had a refurbishment in 2022.",
+      "url": "https://www.edgehill.ac.uk/study/accommodation/main-halls/"
     },
     {
       "name": "Edge link",
       "latitude": 53.558723, 
       "longitude": -2.873582,
       "imageRef": "edge-link.jpg",
-      "description": "Description 2"
+      "description": "The EL1 bus regulary runs between the Edge Hill campus and the bus station in town. The service is free when your Unicard is presented.",
+      "url": "https://www.edgehill.ac.uk/sustainability/travel/"
     },
     {
       "name": "Catalyst",
       "latitude": 53.559620,
       "longitude": -2.871957,
       "imageRef": "catalyst.jpg",
-      "description": "Description 3"
+      "description": "Open 24/7, the catalyst not only acts as a library with quiet study spaces but also has support for any career queries and help with student services.",
+      "url": "https://www.edgehill.ac.uk/location/catalyst/"
     },
     {
       "name": "Creative Edge",
       "latitude": 53.558965,
       "longitude": -2.870981,
       "imageRef": "creative-edge.jpg",
-      "description": "Description 4"
+      "description": "The Creative Edge is a state-of-the-art building providing high-spec suites of industry-standard facilities for media, film, animation and advertising students.",
+      "url": "https://www.edgehill.ac.uk/departments/academic/english-and-creative-arts/creativearts/facilities/"
     },
     {
       "name": "Beach",
       "latitude": 53.558414, 
       "longitude": -2.868991,
       "imageRef": "beach.jpg",
-      "description": "Description 5"
+      "description": "Edge Hill's very own beach located within Chancellor's court.",
+      "url": "https://www.edgehill.ac.uk/study/support-and-wellbeing/green-space/"
     },
     {
       "name": "Sports Centre",
       "latitude": 53.557342, 
       "longitude": -2.868453,
       "imageRef": "sports-centre.jpg",
-      "description": "Description 6"
+      "description": "The Sports Centre features an 80-station fitness suite, aerobics studio, 25-metre swimming pool, health suite and a Café/lounge area.",
+      "url": "https://www.edgehill.ac.uk/departments/support/edgehillsport/"
     },
     {
       "name": "Sports Pitches",
       "latitude": 53.559057, 
       "longitude": -2.868183,
       "imageRef": "sports-pitches.jpg",
-      "description": "Description 7"
+      "description": "Edge Hill has a 3G football/ rugby pitch, 3G football courts, a hockey pitch, grass pitches, an atheltics track and tennis/ netball courts.",
+      "url": "https://www.edgehill.ac.uk/departments/support/edgehillsport/"
     },
     {
       "name": "Durning Centre",
       "latitude": 53.560382, 
       "longitude": -2.870415,
-      "imageRef": "durning.png",
-      "description": "Description 8"
+      "imageRef": "durning.jpg",
+      "description": "The Durning Centre houses facilities management providing hard, soft and commerical FM services to all students.",
+      "url": "https://www.edgehill.ac.uk/departments/support/fm/"
     },
     {
       "name": "Post room",
       "latitude": 53.559876, 
       "longitude": -2.870039,
       "imageRef": "post.png",
-      "description": "Description 9"
+      "description": "Students living on campus can collect their post on weekdays. Post will be held for a maximum of four weeks.",
+      "url": "https://www.edgehill.ac.uk/guide/post-and-parcels/"
     },
     {
       "name": "The Hub",
       "latitude": 53.559595, 
       "longitude": -2.872925,
       "imageRef": "hub.png",
-      "description": "Description 10"
+      "description": "The hub is located in the centre of campus, it provides shops like morrisons and many different options for food, along with much more.",
+      "url": "https://www.edgehill.ac.uk/study/campus-and-facilities/"
     },
     {
       "name": "Wilson Centre",
       "latitude": 53.559909, 
       "longitude": -2.872646,
       "imageRef": "wilson-centre.jpg",
-      "description": "Description 11"
+      "description": "The Wilson Centre is home to a wide range of classrooms, as well as performance, sleep, biochemistry and psychology labs and functional rehab and kinesiology facilities.",
+      "url": "https://www.edgehill.ac.uk/departments/support/edgehillsport/facilities-and-hire/"
     },
     {
       "name": "Business School",
       "latitude": 53.560401, 
       "longitude": -2.873583,
       "imageRef": "business-school.jpg",
-      "description": "Description 12"
+      "description": "The Business School works with key national, regional and local employers and businesses as well as major professional bodies across its degree subjects",
+      "url": "https://www.edgehill.ac.uk/departments/academic/business/"
     },
     {
       "name": "Law and Psychology",
       "latitude": 53.560983, 
       "longitude": -2.874460,
       "imageRef": "law-psychology.jpg",
-      "description": "Description 13"
+      "description": "A language laboratory and specialist experimental facilities for psychological research form part of the £6 million Law and Psychology building.",
+      "url": "https://www.edgehill.ac.uk/departments/academic/psychology/"
     },
     {
       "name": "Geosciences",
       "latitude": 53.561104, 
       "longitude": -2.874136,
       "imageRef": "geosciences.jpg",
-      "description": "Description 14"
+      "description": "GeoSciences houses industry-standard laboratories, purpose-built for physical geography and geo-technical engineering.",
+      "url": "https://www.edgehill.ac.uk/departments/academic/history-geography-and-social-sciences/geography/"
     },
     {
       "name": "Biosciences",
       "latitude": 53.561402, 
       "longitude": -2.873428,
       "imageRef": "biosciences.jpg",
-      "description": "Description 15"
+      "description": "BioSciences is home to modern laboratories, climate controlled insectaries, specialist IT facilities and state-of-the-art scientific equipment.",
+      "url": "https://www.edgehill.ac.uk/subject/undergraduate/biology-and-biosciences/"
     },
     {
       "name": "Tech Hub",
       "latitude": 53.561841, 
       "longitude": -2.873002,
       "imageRef": "tech-hub.jpg",
-      "description": "Description 16"
+      "description": "The £13 million Technology Hub houses a microbiology suite and the CAVE (Computer Augmented Virtual Environment), the UK’s first super immersive 3D virtual environment.",
+      "url": "https://www.edgehill.ac.uk/departments/academic/computerscience/"
     },
     {
       "name": "Clinical skills/ Simulation Centre",
       "latitude": 53.561227, 
       "longitude": -2.874733,
       "imageRef": "simulation.jpg",
-      "description": "Description 17"
+      "description": "A new clinical skills and simulation centre provides innovative facilities that replicate real-world health, social care and medicine environments.",
+      "url": "https://www.edgehill.ac.uk/departments/academic/health/clinical-skills-and-simulation-centre-facilities/"
     },
     {
       "name": "Education Building Piazza",
       "latitude": 53.561480, 
       "longitude": -2.874709,
       "imageRef": "education-piazza.jpg",
-      "description": "Description 18"
+      "description": "The Faculty of Education has a well-established national reputation for the delivery of high-quality Initial Teacher Training (ITT) across the full range of age phases.",
+      "url": "https://www.edgehill.ac.uk/departments/academic/education/"
     },
     {
       "name": "Ducks!",
       "latitude": 53.561409, 
       "longitude": -2.875209,
       "imageRef": "ducks.jpg",
-      "description": "Description 19"
+      "description": "Part of the wildlife on campus, the ducks/ ducklings can always be seen by the education lake.",
+      "url": "https://www.edgehill.ac.uk/news/2023/09/new-study-lists-edge-hill-university-as-a-wildlife-friendly-university/"
     },
     {
       "name": "Campus Cat",
       "latitude": 53.561859, 
       "longitude": -2.875050,
       "imageRef": "campus-cat.jpg",
-      "description": "Description 20"
+      "description": "Part of the wildlife on campus, the campus cat is usually seen either walking around campus or lazing about acting as a comfort for students.",
+      "url": "https://www.edgehill.ac.uk/news/2023/09/new-study-lists-edge-hill-university-as-a-wildlife-friendly-university/"
     },
     {
       "name": "Education Building Lakeside",
       "latitude": 53.562071, 
       "longitude": -2.876163,
       "imageRef": "education-lakeside.jpg",
-      "description": "Description 21"
+      "description": "The Faculty of Education has a well-established national reputation for the delivery of high-quality Initial Teacher Training (ITT) across the full range of age phases.",
+      "url": "https://www.edgehill.ac.uk/departments/academic/education/"
     },
     {
       "name": "Health/ social care/ medicine",
       "latitude": 53.561594, 
       "longitude": -2.876235,
       "imageRef": "medicine.jpg",
-      "description": "Description 22"
+      "description": "The Faculty of Health, Social Care and Medicine is housed in a £14 million purpose-built building with some of the best facilities for health and social care students in the country.",
+      "url": "https://www.edgehill.ac.uk/departments/academic/health/"
     },
     {
       "name": "Arts Centre",
       "latitude": 53.560067, 
       "longitude": -2.876116,
       "imageRef": "arts-centre.jpg",
-      "description": "Description 23"
+      "description": "Discover entertainment in The Studio Theatre and Rose Theatre, as well as a variety of suites and recital spaces purpose-built for the creative arts.",
+      "url": "https://www.edgehill.ac.uk/departments/support/artscentre/"
     },
     {
       "name": "Bunnies",
       "latitude": 53.560504, 
       "longitude": -2.875574,
       "imageRef": "bunnies.jpg",
-      "description": "Description 24"
+      "description": "Part of the wildlife on campus, the bunnies can often be found near the founders west accommodation.",
+      "url": "https://www.edgehill.ac.uk/news/2023/09/new-study-lists-edge-hill-university-as-a-wildlife-friendly-university/"
     },
     {
       "name": "Main Building",
       "latitude": 53.559326,
       "longitude": -2.874310,
       "imageRef": "main-building.jpg",
-      "description": "Description 25"
+      "description": "The main entrance to the Edge Hill campus, the main building is also an accommodation option which recently had a refurbishment in 2022.",
+      "url": "https://www.edgehill.ac.uk/study/accommodation/main-halls/"
     }
   ]

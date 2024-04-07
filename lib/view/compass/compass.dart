@@ -7,6 +7,7 @@ import 'package:flutter_compass/flutter_compass.dart';
 import 'dart:math' as math;
 import 'package:vector_math/vector_math.dart' as vector;
 import 'package:sensors_plus/sensors_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CompassPage extends StatefulWidget{
   const CompassPage({super.key, required this.fileName});
@@ -27,6 +28,7 @@ class _CompassPageState extends State<CompassPage> {
   Stream<Position>? _positionStream; // Use Stream<Position> to continuously update location
   List<dynamic>? locations;
   double? heading = 0; // COMPASS
+  Uri url = Uri.parse("https://www.edgehill.ac.uk");
 
    _CompassPageState(String fileName) {
     fileName2 = fileName;
@@ -44,8 +46,6 @@ class _CompassPageState extends State<CompassPage> {
     });
     });
   }
-
-
 
    void _getCurrentLocation() async {
     LocationPermission permission = await Geolocator.checkPermission();
@@ -111,17 +111,6 @@ class _CompassPageState extends State<CompassPage> {
               Expanded(
                 child: ListView(
                   children: [
-                    // CompassSection(),
-          //           Stack(                     
-          //   alignment: Alignment.center,
-          //   children:[
-          //     Image.asset("images/cadrant.png", scale: 1),
-          //     Transform.rotate(
-          //       angle: ((heading ?? 0) * (math.pi / 180) * -1),
-          //       child: Image.asset("images/compass.png")
-          //       ),
-          //   ]
-          // )    ,
                     MainInfoSection(
                       name: locations![currentIndex]['name'] ?? '',
                       imageRef: locations![currentIndex]['imageRef'] ?? '',
@@ -146,7 +135,14 @@ class _CompassPageState extends State<CompassPage> {
                           return CircularProgressIndicator();
                         }
                       },
-                    ),                                
+                    ),  
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: 
+            [Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(onPressed: _launchUrl(locations![currentIndex]['url'] ?? ''), child: Text("More Information")),
+            )
+            ]
+            )                               
                   ],
                 ),
               ),
@@ -171,6 +167,13 @@ class _CompassPageState extends State<CompassPage> {
         ),
       ),
     );
+  }
+
+  _launchUrl(String url) async{
+    final Uri urlFinal = Uri.parse(url);
+    if(!await launchUrl(urlFinal)){
+      throw Exception('Could not launch $url');
+    }
   }
 
 }
@@ -201,65 +204,6 @@ class ImageSection extends StatelessWidget{
     );
   }
 }
-
-// class DistanceFromCurrentLocation extends StatelessWidget {
-//   final Position currentPosition;
-//   final double destinationLatitude;
-//   final double destinationLongitude;
-
-//   DistanceFromCurrentLocation({
-//     required this.currentPosition,
-//     required this.destinationLatitude,
-//     required this.destinationLongitude,
-//   });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     if (currentPosition == null) {
-//       return Container(
-//         padding: EdgeInsets.all(20.0),
-//         child: Text('Current position not available'),
-//       );
-//     }
-
-//     double distanceInMeters = Geolocator.distanceBetween(
-//       currentPosition.latitude,
-//       currentPosition.longitude,
-//       destinationLatitude,
-//       destinationLongitude,
-//     );
-
-//     double distanceInKm = distanceInMeters / 1000;
-
-//     double targetAngle = math.atan2(
-//       destinationLongitude - currentPosition.longitude,
-//       destinationLatitude - currentPosition.latitude,
-//     ) *
-//         (180 / math.pi);
-
-
-//     return Container(
-//       padding: const EdgeInsets.only(left: 10.0,top: 20,right: 10,bottom: 10),
-//       child: Column(
-//         crossAxisAlignment: CrossAxisAlignment.start,
-//         children: [
-//           Text('Distance from Current Location: ${distanceInMeters.toStringAsFixed(2)} metres', 
-//           style: TextStyle(fontSize: 15, fontStyle: FontStyle.italic)),
-//           Stack(
-//             alignment: Alignment.center,
-//             children: [
-//               Image.asset("images/cadrant.png", scale: 1),
-//               Transform.rotate(
-//                 angle: ((targetAngle) * (math.pi / 180) * -1),
-//                 child: Image.asset("images/compass.png"),
-//               ),
-//             ],
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
 
 class DistanceFromCurrentLocation extends StatefulWidget {
   final Position currentPosition;
@@ -386,7 +330,7 @@ class MainInfoSection extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return SizedBox(
-      height: 450,
+      height: 400,
       child: Card(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -416,7 +360,7 @@ class MainInfoSection extends StatelessWidget{
             //     },
             //   )
             // ),           
-            TextSection(description: description),           
+            TextSection(description: description),         
           ]
         )
       )

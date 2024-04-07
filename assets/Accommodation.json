@@ -3,69 +3,79 @@
       "latitude": 53.559326,
       "longitude": -2.874310,
       "imageRef": "main-halls.jpg",
-      "description": "Description 1"
+      "description": "The main entrance to the Edge Hill campus, the main building is also an accommodation option which recently had a refurbishment in 2022.",
+      "url": "https://www.edgehill.ac.uk/study/accommodation/main-halls/"
     },
     {
       "name": "Founders East",
       "latitude": 53.559499,
       "longitude": -2.875545,
       "imageRef": "founders-west-east.jpg",
-      "description": "Description 2"
+      "description": "Founders East and West consist of 12 overall buildings. They are both right beside the arts centre and close to the education lake.",
+      "url": "https://www.edgehill.ac.uk/study/accommodation/founders-east-and-founders-west/"
     },
     {
       "name": "Founders West",
       "latitude": 53.560080,
       "longitude": -2.876252,
       "imageRef": "founders-west-east.jpg",
-      "description": "Description 3"
+      "description": "Founders East and West consist of 12 overall buildings. They are both right beside the arts centre and close to the education lake.",
+      "url": "https://www.edgehill.ac.uk/study/accommodation/founders-east-and-founders-west/"
     },
     {
       "name": "Graduates Court",
       "latitude": 53.562571,
       "longitude": -2.877242,
       "imageRef": "graduates-court.jpg",
-      "description": "Description 4"
+      "description": "Graduates Court consists of 5 buildings which are close to the education/ health, social care and medicine buildings.",
+      "url": "https://www.edgehill.ac.uk/study/accommodation/graduates-court/"
     },
     {
       "name": "Woodland Court",
       "latitude": 53.55904,
       "longitude": -2.872213,
       "imageRef": "woodland-court.jpg",
-      "description": "Description 5"
+      "description": "Woodland Court consists of 25 buildings, it is specifically only available for second and third years.",
+      "url": "https://www.edgehill.ac.uk/study/accommodation/woodland-court/"
     },
     {
       "name": "Chancellors Court",
       "latitude": 53.558916,
       "longitude": -2.869713,
       "imageRef": "chancellors-court.jpg",
-      "description": "Description 6"
+      "description": "Chancellors Court and South consist of 14 buildings close to Edge Hill sport and the creative edge.",
+      "url": "https://www.edgehill.ac.uk/study/accommodation/chancellors-court-and-chancellors-south/"
     },
     {
       "name": "Chancellors South",
       "latitude": 53.558475,
       "longitude": -2.869578,
       "imageRef": "chancellors-court.jpg",
-      "description": "Description 7"
+      "description": "Chancellors Court and South consist of 14 buildings close to Edge Hill sport and the creative edge.",
+      "url": "https://www.edgehill.ac.uk/study/accommodation/chancellors-court-and-chancellors-south/"
     },
     {
       "name": "Palatine Court",
       "latitude": 53.557897,
       "longitude": -2.872548,
       "imageRef": "palatine-court.jpg",
-      "description": "Description 8"
+      "description": "Palatine Court consists of 7 buildings near the main building at the front of the campus.",
+      "url": "https://www.edgehill.ac.uk/study/accommodation/palatine-court/"
     },
     {
       "name": "Forest Court",
       "latitude": 53.558463,
       "longitude": -2.872965,
       "imageRef": "forest-court.jpg",
-      "description": "Description 9"
+      "description": "Forest Court consists of 10 overall buildings. 4 of these are en-suite and 6 of these are shared bathroom.",
+      "url": "https://www.edgehill.ac.uk/study/accommodation/chancellors-court-and-chancellors-south/"
     },
     {
       "name": "Main Halls",
       "latitude": 53.559326,
       "longitude": -2.874310,
       "imageRef": "main-halls.jpg",
-      "description": "Description 10"
+      "description": "The main entrance to the Edge Hill campus, the main building is also an accommodation option which recently had a refurbishment in 2022.",
+      "url": "https://www.edgehill.ac.uk/study/accommodation/main-halls/"
     }
   ]

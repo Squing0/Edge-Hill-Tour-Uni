@@ -46,8 +46,11 @@ class HomePageMain extends StatelessWidget{
                 "Select Tour", 
                 style: TextStyle(fontSize: 45, color: Colors.white),
                 ),
-            ),]) ,
-          )
+            ),
+            
+            ]) ,
+          ),
+          
 
     );
     }

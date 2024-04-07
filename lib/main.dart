@@ -6,6 +6,7 @@ import 'package:edge_hill_tour/geolocatorTrial.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:edge_hill_tour/smooth_compass_trial.dart';
 import 'package:edge_hill_tour/jsonTest.dart';
+import 'package:edge_hill_tour/view/select_tour/selectTour.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,7 +17,7 @@ void main() {
 
   runApp(
     // CompassPage(fileName: 'Main-Tour',)
-    HomePage()
+    SelectTourPage()
   );
 }
 
