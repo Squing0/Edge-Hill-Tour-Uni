@@ -136,13 +136,13 @@ class _CompassPageState extends State<CompassPage> {
                         }
                       },
                     ),  
-                    Row(mainAxisAlignment: MainAxisAlignment.center, children: 
-            [Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ElevatedButton(onPressed: _launchUrl(locations![currentIndex]['url'] ?? ''), child: Text("More Information")),
-            )
-            ]
-            )                               
+            //         Row(mainAxisAlignment: MainAxisAlignment.center, children: 
+            // [Padding(
+            //   padding: const EdgeInsets.all(8.0),
+            //   child: ElevatedButton(onPressed: _launchUrl(locations![currentIndex]['url'] ?? ''), child: Text("More Information")),
+            // )
+            // ]
+            // )                               
                   ],
                 ),
               ),
@@ -169,12 +169,12 @@ class _CompassPageState extends State<CompassPage> {
     );
   }
 
-  _launchUrl(String url) async{
-    final Uri urlFinal = Uri.parse(url);
-    if(!await launchUrl(urlFinal)){
-      throw Exception('Could not launch $url');
-    }
-  }
+  // _launchUrl(String url) async{
+  //   final Uri urlFinal = Uri.parse(url);
+  //   if(!await launchUrl(urlFinal)){
+  //     throw Exception('Could not launch $url');
+  //   }
+  // }
 
 }
 
