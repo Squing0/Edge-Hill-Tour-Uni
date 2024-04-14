@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:accordion/accordion.dart';
 import 'package:edge_hill_tour/view/compass/compass.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 
 class SelectTourPage extends StatelessWidget{
@@ -36,6 +37,7 @@ class _SelectTourMainState extends State<SelectTourMain> {
     final List<String> campusTourPlaces = ["Catalyst", "Arts Center", "Tech Hub", "Education Building", "Creative Edge"];
     final List<String> accommodationPlaces = ["Forest Court", "Founders West", "Founders East", "Woodland Court", "Chancellors Court"];
     final List<String> tourChoice = ["", "Main-Tour", "Accommodation"];
+    Uri url = Uri.parse("https://www.edgehill.ac.uk");
 
     @override
     Widget build(BuildContext context){
@@ -91,7 +93,26 @@ class _SelectTourMainState extends State<SelectTourMain> {
       }).toList(),
 
             ),
-            )
+            ),
+             Padding(
+               padding: const EdgeInsets.only(top: 180),
+               child: Expanded(
+                 child: Align(
+                   alignment: Alignment.bottomCenter,
+                   child: ElevatedButton(
+                     onPressed: () => _launchUrl(),
+                     child: const Text(
+                       "Edge Hill Site",
+                       style: TextStyle(
+                         fontStyle: FontStyle.italic,
+                         color: Color.fromARGB(255, 239, 239, 239),
+                         fontSize: 25,
+                       ),
+                     ),
+                   ),
+                 ),
+               ),
+             )
             
             
           ]
@@ -99,6 +120,12 @@ class _SelectTourMainState extends State<SelectTourMain> {
         
     );
     }
+
+      _launchUrl() async{
+    if(!await launchUrl(url)){
+      throw Exception('Could not launch $url');
+    }
+  }
 }
 
   AccordionSection CreateAccordionSection(List<String> campusTourPlaces, String accordionName) {

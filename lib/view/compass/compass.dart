@@ -116,6 +116,14 @@ class _CompassPageState extends State<CompassPage> {
                       imageRef: locations![currentIndex]['imageRef'] ?? '',
                       description: locations![currentIndex]['description'] ?? '',
                     ),
+                                        Row(mainAxisAlignment: MainAxisAlignment.center, children: 
+            [Padding(
+              padding: const EdgeInsets.all(1.0),
+              child: ElevatedButton(onPressed: () =>_launchUrl(locations![currentIndex]['url'] ?? ''), 
+              child: const Text("More Information", style: TextStyle(fontStyle: FontStyle.italic, color: Colors.white))),
+            )
+            ]
+            )     ,
                     StreamBuilder<Position>(
                       stream: _positionStream,
                       builder: (context, snapshot) {
@@ -135,14 +143,7 @@ class _CompassPageState extends State<CompassPage> {
                           return CircularProgressIndicator();
                         }
                       },
-                    ),  
-            //         Row(mainAxisAlignment: MainAxisAlignment.center, children: 
-            // [Padding(
-            //   padding: const EdgeInsets.all(8.0),
-            //   child: ElevatedButton(onPressed: _launchUrl(locations![currentIndex]['url'] ?? ''), child: Text("More Information")),
-            // )
-            // ]
-            // )                               
+                    ),                           
                   ],
                 ),
               ),
@@ -169,12 +170,12 @@ class _CompassPageState extends State<CompassPage> {
     );
   }
 
-  // _launchUrl(String url) async{
-  //   final Uri urlFinal = Uri.parse(url);
-  //   if(!await launchUrl(urlFinal)){
-  //     throw Exception('Could not launch $url');
-  //   }
-  // }
+  _launchUrl(String url) async{
+    final Uri urlFinal = Uri.parse(url);
+    if(!await launchUrl(urlFinal)){
+      throw Exception('Could not launch $url');
+    }
+  }
 
 }
 
@@ -266,9 +267,17 @@ class _DistanceFromCurrentLocationState
     // Calculate the rotation angle for the compass needle
     double rotationAngle = targetAngle - (_heading ?? 0);
 
+//     if (rotationAngle > 180) { // Don't think this helped accuracy much even if is more smooth
+//   rotationAngle -= 360;
+// } else if (rotationAngle < -180) {
+//   rotationAngle += 360;
+// }
+
+rotationAngle *= -1;
+
     return Container(
       padding:
-          const EdgeInsets.only(left: 10.0, top: 20, right: 10, bottom: 10),
+          const EdgeInsets.only(left: 10.0, top: 5, right: 10, bottom: 5),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -276,7 +285,7 @@ class _DistanceFromCurrentLocationState
             'Distance from Current Location: ${distanceInMeters.toStringAsFixed(2)} meters',
             style: TextStyle(fontSize: 15, fontStyle: FontStyle.italic),
           ),
-          SizedBox(height: 20),
+          SizedBox(height: 15),
           Stack(
             alignment: Alignment.center,
             children: [
