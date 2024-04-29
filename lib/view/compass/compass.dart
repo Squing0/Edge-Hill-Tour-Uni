@@ -1,12 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:audioplayers/audioplayers.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_compass/flutter_compass.dart';
 import 'dart:math' as math;
 import 'package:url_launcher/url_launcher.dart';
-
 
 class CompassPage extends StatefulWidget{
   const CompassPage({super.key, required this.fileName});
@@ -17,17 +15,14 @@ class CompassPage extends StatefulWidget{
   State<CompassPage> createState() => _CompassPageState(fileName);
 }
 
-
-
 class _CompassPageState extends State<CompassPage> {
   String fileName2 = "";
   int currentIndex = 0;
   final double targetRadius = 100;
-  Position? _currentPosition; // Tried late but did not work here
+  Position? _currentPosition; 
   Stream<Position>? _positionStream; // Use Stream<Position> to continuously update location
   List<dynamic>? locations;
-  double? heading = 0; // COMPASS
-  Uri url = Uri.parse("https://www.edgehill.ac.uk");
+  double? heading = 0; 
 
    _CompassPageState(String fileName) {
     fileName2 = fileName;
@@ -40,7 +35,7 @@ class _CompassPageState extends State<CompassPage> {
     _positionStream = Geolocator.getPositionStream(); // Initialize the position stream
     loadLocations();
 
-    FlutterCompass.events!.listen((event) {setState(() {  // COMPASS
+    FlutterCompass.events!.listen((event) {setState(() {  
       heading = event.heading;
     });
     });
@@ -115,14 +110,14 @@ class _CompassPageState extends State<CompassPage> {
                       imageRef: locations![currentIndex]['imageRef'] ?? '',
                       description: locations![currentIndex]['description'] ?? '',
                     ),
-                                        Row(mainAxisAlignment: MainAxisAlignment.center, children: 
-            [Padding(
-              padding: const EdgeInsets.all(1.0),
-              child: ElevatedButton(onPressed: () =>_launchUrl(locations![currentIndex]['url'] ?? ''), 
-              child: const Text("More Information", style: TextStyle(fontStyle: FontStyle.italic, color: Colors.white))),
-            )
-            ]
-            )     ,
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: 
+                      [Padding(
+                        padding: const EdgeInsets.all(1.0),
+                        child: ElevatedButton(onPressed: () =>_launchUrl(locations![currentIndex]['url'] ?? ''), 
+                        child: const Text("More Information", style: TextStyle(fontStyle: FontStyle.italic, color: Colors.white))),
+                        )
+                      ]
+                    ),
                     StreamBuilder<Position>(
                       stream: _positionStream,
                       builder: (context, snapshot) {
@@ -178,7 +173,6 @@ class _CompassPageState extends State<CompassPage> {
 
 }
 
-
 Future<Position> getCurrentLocation() async {
   LocationPermission permission = await Geolocator.checkPermission();
   if (permission == LocationPermission.denied) {
@@ -186,23 +180,6 @@ Future<Position> getCurrentLocation() async {
   }
   
   return await Geolocator.getCurrentPosition();
-}
-
-class ImageSection extends StatelessWidget{
-  const ImageSection({super.key, required this.image, required this.height});
-
-  final String image;
-  final double height;
-
-  @override
-  Widget build(BuildContext context){
-    return Image.asset(
-      image,
-      // width: 612,
-      height: height,
-      fit: BoxFit.cover,
-    );
-  }
 }
 
 class DistanceFromCurrentLocation extends StatefulWidget {
@@ -259,13 +236,13 @@ class _DistanceFromCurrentLocationState
     // Calculate the rotation angle for the compass needle
     double rotationAngle = targetAngle - (_heading ?? 0);
 
-//     if (rotationAngle > 180) { // Don't think this helped accuracy much even if is more smooth
-//   rotationAngle -= 360;
-// } else if (rotationAngle < -180) {
-//   rotationAngle += 360;
-// }
+    //     if (rotationAngle > 180) { // Don't think this helped accuracy much even if is more smooth
+    //   rotationAngle -= 360;
+    // } else if (rotationAngle < -180) {
+    //   rotationAngle += 360;
+    // }
 
-rotationAngle *= -1;
+    rotationAngle *= -1;
 
     return Container(
       padding:
@@ -294,30 +271,8 @@ rotationAngle *= -1;
   }
 }
 
-
-
-
-
-
-
-
-
-
-class CompassSection extends StatelessWidget{
-  const CompassSection({super.key});
-
-  @override
-  Widget build(BuildContext context){
-    return  Stack(
-      children: <Widget>[
-        Image.asset("images/campusBirdsEye.jpg", fit: BoxFit.contain),
-      ]
-    );
-  }
-}
-
 class MainInfoSection extends StatelessWidget{
-  MainInfoSection({super.key, 
+  const MainInfoSection({super.key, 
   required this.name, 
   required this.description, 
   required this.imageRef});
@@ -325,8 +280,6 @@ class MainInfoSection extends StatelessWidget{
   final String name;
   final String description;
   final String imageRef;
-
-  final player = AudioPlayer();
 
   @override
   Widget build(BuildContext context){
@@ -347,20 +300,9 @@ class MainInfoSection extends StatelessWidget{
                   image: AssetImage("images/$imageRef"), 
                   fit: BoxFit.cover),
                   border: Border.all(color: const Color.fromARGB(255, 95,41,95), width: 10),
-                  // borderRadius: BorderRadius.circular(5)
                   ) ,
                 )        
-            ),
-            // Padding(
-            //   padding: const EdgeInsets.only(top: 1),
-            //   child: IconButton(
-            //     icon: const Icon(Icons.audio_file),
-            //     color: Colors.green,
-            //     onPressed: (){
-            //       player.play(UrlSource("assets/trial.mp3"));
-            //     },
-            //   )
-            // ),           
+            ),         
             TextSection(description: description),         
           ]
         )
@@ -387,6 +329,5 @@ class TextSection extends StatelessWidget{
         style: const TextStyle(fontSize: 20),
       )
     );
-
   }
 }
