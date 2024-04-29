@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:edge_hill_tour/view/select_tour/selectTour.dart';
+import 'package:edge_hill_tour/view/select_tour/select_tour.dart';
 
 class HomePage extends StatelessWidget{
   const HomePage({super.key});

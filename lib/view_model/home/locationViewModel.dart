@@ -1,6 +1,8 @@
+// ignore_for_file: avoid_print, file_names
+
 import 'dart:convert';
 import 'package:flutter/services.dart';
-import 'package:edge_hill_tour/models/locationModel.dart';
+import 'package:edge_hill_tour/models/location_model.dart';
 
 class LocationViewModel{
   List<Location> locations = [];
@@ -10,23 +12,18 @@ class LocationViewModel{
     final List<dynamic> jsonList = json.decode(jsonContent);
 
     locations = jsonList.map((json) => Location.fromJson(json)).toList();
-
   }
 
   void loadJsonFile() async {
   try {
     String jsonString = await rootBundle.loadString('locations.json');
 
-    if (jsonString.isNotEmpty) {
-      List<dynamic> locations = json.decode(jsonString);
-
-      // Use the 'locations' list as needed
-    } else {
+    if (jsonString.isEmpty) {
       print('JSON file is empty or null.');
-    }
-  } catch (error) {
+    } 
+  } 
+  catch (error) {
     print('Error loading JSON file: $error');
   }
 }
-
 }

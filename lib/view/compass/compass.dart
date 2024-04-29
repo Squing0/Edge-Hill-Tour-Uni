@@ -5,9 +5,8 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:flutter_compass/flutter_compass.dart';
 import 'dart:math' as math;
-import 'package:vector_math/vector_math.dart' as vector;
-import 'package:sensors_plus/sensors_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 
 class CompassPage extends StatefulWidget{
   const CompassPage({super.key, required this.fileName});
@@ -103,7 +102,7 @@ class _CompassPageState extends State<CompassPage> {
             "Compass Page",
             style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
           ),
-          backgroundColor: Color.fromARGB(255, 220, 212, 98),
+          backgroundColor: const Color.fromARGB(255, 220, 212, 98),
         ),
         body: Column(
           children: [
@@ -140,7 +139,7 @@ class _CompassPageState extends State<CompassPage> {
                         } else if (snapshot.hasError) {
                           return Text('Error: ${snapshot.error}');
                         } else {
-                          return CircularProgressIndicator();
+                          return const CircularProgressIndicator();
                         }
                       },
                     ),                           
@@ -148,7 +147,7 @@ class _CompassPageState extends State<CompassPage> {
                 ),
               ),
             if (locations == null)
-              Center(
+              const Center(
                 child: CircularProgressIndicator(),
               ),
             Row(
@@ -156,11 +155,11 @@ class _CompassPageState extends State<CompassPage> {
               children: [
                 ElevatedButton(
                   onPressed: goToPreviousLocation,
-                  child: Text('Previous'),
+                  child: const Text('Previous'),
                 ),
                 ElevatedButton(
                   onPressed: goToNextLocation,
-                  child: Text('Next'),
+                  child: const Text('Next'),
                 ),
               ],
             ),
@@ -211,7 +210,7 @@ class DistanceFromCurrentLocation extends StatefulWidget {
   final double destinationLatitude;
   final double destinationLongitude;
 
-  DistanceFromCurrentLocation({
+  const DistanceFromCurrentLocation({super.key, 
     required this.currentPosition,
     required this.destinationLatitude,
     required this.destinationLongitude,
@@ -242,13 +241,6 @@ class _DistanceFromCurrentLocationState
 
   @override
   Widget build(BuildContext context) {
-    if (widget.currentPosition == null) {
-      return Container(
-        padding: EdgeInsets.all(20.0),
-        child: Text('Current position not available'),
-      );
-    }
-
     double distanceInMeters = Geolocator.distanceBetween(
       widget.currentPosition.latitude,
       widget.currentPosition.longitude,
@@ -283,9 +275,9 @@ rotationAngle *= -1;
         children: [
           Text(
             'Distance from Current Location: ${distanceInMeters.toStringAsFixed(2)} meters',
-            style: TextStyle(fontSize: 15, fontStyle: FontStyle.italic),
+            style: const TextStyle(fontSize: 15, fontStyle: FontStyle.italic),
           ),
-          SizedBox(height: 15),
+          const SizedBox(height: 15),
           Stack(
             alignment: Alignment.center,
             children: [
@@ -352,9 +344,9 @@ class MainInfoSection extends StatelessWidget{
               child: Container(
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                  image: new AssetImage("images/$imageRef"), 
+                  image: AssetImage("images/$imageRef"), 
                   fit: BoxFit.cover),
-                  border: Border.all(color: Color.fromARGB(255, 95,41,95), width: 10),
+                  border: Border.all(color: const Color.fromARGB(255, 95,41,95), width: 10),
                   // borderRadius: BorderRadius.circular(5)
                   ) ,
                 )        
